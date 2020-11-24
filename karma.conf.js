@@ -19,7 +19,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/DG2-Form-Frontend'),
+      dir: require('path').join(__dirname, './coverage/Kitchenshop-frontend'),
       subdir: '.',
       reporters: [
         { type: 'html' },
