@@ -8,6 +8,9 @@ import { NavigationbarComponent } from './navigationbar/navigationbar.component'
   declarations: [NavigationbarComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    NavigationbarComponent
   ]
 })
 export class GlobalModule { }
