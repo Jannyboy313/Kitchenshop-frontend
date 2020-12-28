@@ -1,14 +1,14 @@
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/home" routerLinkActive="active">Piscines</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand font" routerLink="/home" href="">Piscines</a>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
         <div class="navbar-nav">
-          <a class="nav-item nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" routerLink="/home">Products</a>
-          <a class="nav-item nav-link" routerLink="/home">About us</a>
-          <!-- <a class="nav-item nav-link" routerLink="/home">Disabled</a> -->
+          <a class="nav-item nav-link font" routerLink="/home" (click)="isCollapsed = true">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link font" routerLink="/home" (click)="isCollapsed = true">Products</a>
+          <a class="nav-item nav-link font" routerLink="/home" (click)="isCollapsed = true">About us</a>
+          <a class="nav-item nav-link font" routerLink="/home">Disabled</a>
         </div>
     </div>
 
