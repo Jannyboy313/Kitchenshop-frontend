@@ -12,7 +12,8 @@ import { FooterComponent } from './footer/footer.component';
     NgbModule
   ],
   exports: [
-    NavigationbarComponent
+    NavigationbarComponent,
+    FooterComponent
   ]
 })
 export class GlobalModule { }
