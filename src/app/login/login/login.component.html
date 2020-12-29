@@ -3,17 +3,17 @@
       <form class="container-fluid" #form="ngForm" (ngSubmit)="onSubmit(form)">
         <header>Piscine</header>
         <div class="alert-danger rounded" *ngIf="isError">
-            <p>Username or password incorrect</p>
+            <p>Email or password incorrect</p>
         </div>
         <div class="row-cols-1 form-inside">
           <div class="input-field">
             <label class="col-auto">
-              Gebruikersnaam
+              Emailadres
             </label>
             <input
             type="text"
-            placeholder="Invullen gebruikersnaam"
-            name="username"
+            placeholder="Invullen emailadres"
+            name="email"
             required
             class="col-auto
             form-control"
@@ -43,7 +43,7 @@
         type="submit"
         class="btn float-right"
         [disabled]="!form.valid"
-        >Inloggen
+        >Log In
       </button>
       </form>
     </div>

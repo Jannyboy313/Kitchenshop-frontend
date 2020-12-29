@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   /// TODO: Please remove the timeout and fix it
   onSubmit(form: NgForm) {
-    if(!this.authService.login({username: form.value.username, password: form.value.password})) {
+    if(!this.authService.login({email: form.value.email, password: form.value.password})) {
       setTimeout(() => {
         this.isError = true;
         form.reset();

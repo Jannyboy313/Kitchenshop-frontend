@@ -14,16 +14,16 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router,) {}
 
-  login({ username, password }) : boolean {
+  login({ email, password }) : boolean {
     let isSuccess: boolean;
-    this.http.post<any>(environment.apiUrl + "login",
-    {"username": username, "password": password})
+    this.http.post<any>(environment.apiUrl + "/login",
+    {"email": email, "password": password})
       .subscribe(
         (value) => {
-          this.loginUser(username, value.role, value.token);
-          this.router.navigate(['/formSelection']);
+          this.loginUser(email, value.role, value.token);
+          this.router.navigate(['/home']);
           if (this.getUser().role === 'admin'){
-            this.router.navigate(['/adminforms']);
+            this.router.navigate(['/admin']);
           }
           isSuccess = true;
         },
