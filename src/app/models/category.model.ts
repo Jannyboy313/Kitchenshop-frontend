@@ -1,6 +1,6 @@
 import { Deserializable } from "./deserializable.model";
 
-export class category implements Deserializable {
+export class Category implements Deserializable {
   name: string;
   description: string;
 
