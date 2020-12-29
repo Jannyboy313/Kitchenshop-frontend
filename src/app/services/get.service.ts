@@ -5,22 +5,24 @@ import { Category } from '../models/category.model';
 import { Product } from '../models/product.model';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class GetService {
-
+  env = environment;
   constructor(private http: HttpClient) { }
 
   public getCategories(): Observable<Category[]> {
     return this.http
-    .get<Category[]>('http://188.166.60.11/categories').pipe(
+    .get<Category[]>(`${this.env.apiUrl}/categories`).pipe(
     map(data => data.map(data => new Category().deserialize(data))));
   }
 
   public getProducts(): Observable<Product[]> {
     return this.http
-    .get<Product[]>('http://188.166.60.11/products').pipe(
+    .get<Product[]>(`${this.env.apiUrl}/products`).pipe(
     map(data => data.map(data => new Product().deserialize(data))));
   }
 }
