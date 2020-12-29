@@ -1,5 +1,5 @@
 h1 {
-    font-size: 28px;
+    font-size: 26px;
 }
 
 h2 {
@@ -10,7 +10,42 @@ img {
     margin-bottom: 8px;
 }
 
+.hotproducts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .box {
     padding: 20px;
-    margin: 25px;
+    max-width: 75%;
+}
+
+
+@media only screen and (max-width: 992px) {
+    h1 {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .hotproducts {
+        flex-direction: column;
+    }
+    .box {
+        margin: auto;
+    }
+
+}
+
+@media only screen and (max-width: 576px) {
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 19px;
+    }
+    p {
+        font-size: 15px;
+    }
 }
