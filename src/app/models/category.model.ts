@@ -1,9 +1,8 @@
-import {Deserializable} from "./deserializable.model";
+import { Deserializable } from "./deserializable.model";
 
 export class category implements Deserializable {
-  id: number;
   name: string;
-  car: Car;
+  description: string;
 
   deserialize(input: any) {
     Object.assign(this, input);
