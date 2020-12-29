@@ -5,3 +5,16 @@
 .titleColor {
     color: #285e86;
 }
+
+.nav-color {
+    background-color: #F0F0F0;
+}
+
+a {
+    color: #57697a;
+}
+
+a:hover {
+    color: #798d9f;
+
+}
