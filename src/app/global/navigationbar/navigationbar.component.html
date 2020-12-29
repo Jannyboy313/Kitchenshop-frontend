@@ -17,7 +17,7 @@
           routerLink="/home"
           (click)="isCollapsed = true">About us</a>
         </div>
-        
+
         <div class="navbar-nav justify-content-end">
 
           <a class="nav-item nav-link"
@@ -26,7 +26,7 @@
           *ngIf="isAdmin()">Admin</a>
 
           <a class="nav-item nav-link"
-          routerLink="/home"
+          routerLink="/login"
           (click)="isCollapsed = true"
           *ngIf="!isLoggedIn()">Login</a>
 
