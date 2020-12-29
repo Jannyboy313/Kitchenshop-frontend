@@ -1,50 +1,95 @@
 <div>
     <div class="container vertical-center">
         <form class="container-fluid" #form="ngForm" (ngSubmit)="onSubmit(form)">
-            <header>Piscine</header>
-            <div class="alert-danger rounded" *ngIf="isError">
-                <p>Email or password incorrect</p>
-            </div>
-            <div class="row-cols-1 form-inside">
-                <div class="input-field">
-                    <label class="col-auto email">
-                    Emailadres
+            <header>Register</header>
+
+                <div class="form-group col item">
+                    <label>
+                        Firstname
                     </label>
                     <input
                         type="text"
-                        placeholder="Invullen emailadres"
-                        name="email"
+                        placeholder="Fill in firstname"
+                        name="firstname"
                         required
-                        class="col-auto
-                        form-control"
+                        class="form-control"
                         ngModel
                         [ngClass]="{'is-invalid' : isError}"
                     >
                 </div>
-            </div>
-            <div class="row-cols-1 form-inside">
-                <div class="input-field">
-                    <label class="col-auto">
-                    Wachtwoord
+
+                <div class="form-group col item">
+                    <label>
+                        Middlename
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Fill in middlename"
+                        name="middlename"
+                        class="form-control"
+                        ngModel
+                        [ngClass]="{'is-invalid' : isError}"
+                    >
+                </div>
+
+                <div class="form-group col item">
+                    <label >
+                        Lastname
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Fill in lastname"
+                        name="lastname"
+                        required
+                        class="form-control"
+                        ngModel
+                        [ngClass]="{'is-invalid' : isError}"
+                    >
+                </div>
+
+                <div class="form-group col item">
+                    <label>
+                        Emailadres
+                    </label>
+                    <input
+                        type="email"
+                        placeholder="Fill in emailadres"
+                        name="email"
+                        required
+                        class="form-control"
+                        ngModel
+                        [ngClass]="{'is-invalid' : isError}"
+                    >
+                </div>
+
+                <div class="form-group col item item-last">
+                    <label>
+                        Password
                     </label>
                     <input
                         type="password"
-                        placeholder="Invullen wachtwoord"
+                        placeholder="Fill in password"
                         name="password"
                         required
-                        class="col-auto
-                        form-control"
+                        class="form-control"
                         ngModel
                         [ngClass]="{'is-invalid' : isError}"
                     >
                 </div>
-            </div>
+
+            <button
+            type="button"
+            class="btn float-left cancel"
+            (click)="cancel()"
+        >
+            cancel
+        </button>
             <button
                 type="submit"
                 class="btn float-right"
                 [disabled]="!form.valid"
             >
-                Log In
+                Register
             </button>
         </form>
     </div>
