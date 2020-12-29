@@ -1,0 +1,10 @@
+<div class="container-fluid body">
+    <div class="row" >
+        <div *ngFor="let category of categories; let i = index" class="outside-box">
+            <div class="col border rounded inside-box">
+                <h1>{{category.name}}</h1>
+                <p>{{category.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
