@@ -1,1 +1,50 @@
-<p>login works!</p>
+<div>
+    <div class="container vertical-center">
+      <form class="container-fluid" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <header>Piscine</header>
+        <div class="alert-danger rounded" *ngIf="isError">
+            <p>Username or password incorrect</p>
+        </div>
+        <div class="row-cols-1 form-inside">
+          <div class="input-field">
+            <label class="col-auto">
+              Gebruikersnaam
+            </label>
+            <input
+            type="text"
+            placeholder="Invullen gebruikersnaam"
+            name="username"
+            required
+            class="col-auto
+            form-control"
+            ngModel
+            [ngClass]="{'is-invalid' : isError}"
+            >
+          </div>
+        </div>
+        <div class="row-cols-1 form-inside">
+          <div class="input-field">
+            <label class="col-auto password">
+              Wachtwoord
+            </label>
+            <input
+            type="password"
+            placeholder="Invullen wachtwoord"
+            name="password"
+            required
+            class="col-auto
+            form-control"
+            ngModel
+            [ngClass]="{'is-invalid' : isError}"
+            >
+          </div>
+        </div>
+        <button
+        type="submit"
+        class="btn float-right"
+        [disabled]="!form.valid"
+        >Inloggen
+      </button>
+      </form>
+    </div>
+  </div>
