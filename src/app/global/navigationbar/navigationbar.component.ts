@@ -14,12 +14,12 @@ export class NavigationbarComponent implements OnInit {
 
   // TODO Get permission from authservice
   isAdmin() {
-    return true;
+    return false;
   }
 
   // TODO Get login from authservice
   isLoggedIn() {
-    return true;
+    return false;
   }
 
   logout() {
