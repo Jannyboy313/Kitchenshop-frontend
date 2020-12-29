@@ -83,6 +83,20 @@ button:hover {
     cursor: hand;
 }
 
+.register {
+    background-color: rgb(250, 250, 247);
+    border-width: 2px;
+    border-color: #57697a;
+    border-style: solid;
+    color: #000000;
+}
+
+.register:hover {
+    background-color: rgb(250, 245, 245);
+    color: #000000;
+    border-color: #285e86;
+}
+
 .alert-danger {
     margin: 0 20px 0 20px;
     padding: 5px;
