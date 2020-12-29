@@ -2,14 +2,6 @@ h1 {
     font-size: 28px;
 }
 
-h2 {
-    font-size: 22px;
-}
-
-img {
-    margin-bottom: 8px;
-}
-
 .inside-box {
     max-width: 75%;
     padding: 20px;
@@ -19,4 +11,13 @@ img {
 
 .outside-box {
     margin: 20px 0 20px 0;
+}
+
+@media only screen and (max-width: 576px) {
+    h1 {
+        font-size: 22px;
+    }
+    p {
+        font-size: 15px;
+    }
 }
