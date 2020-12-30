@@ -20,6 +20,9 @@
                         <div *ngIf="registerForm.controls['firstName'].errors.required" class="invalid-feedback">
                             Firstname is required
                         </div>
+                        <div *ngIf="registerForm.controls['firstName'].errors.pattern" class="invalid-feedback">
+                            Firstname must be a valid name
+                        </div>
                     </div>
                 </div>
 
@@ -35,8 +38,8 @@
                         ngModel
                     >
                     <div *ngIf="isValidInput('middleName')">
-                        <div *ngIf="registerForm.controls['middleName'].errors.invalid" class="invalid-feedback">
-                            Middlename is invalid
+                        <div *ngIf="registerForm.controls['middleName'].errors.pattern" class="invalid-feedback">
+                            Middlename must be a valid name
                         </div>
                     </div>
                 </div>
@@ -56,6 +59,9 @@
                     <div *ngIf="isValidInput('LastName')">
                         <div *ngIf="registerForm.controls['LastName'].errors.required" class="invalid-feedback">
                             Lastname is required
+                        </div>
+                        <div *ngIf="registerForm.controls['LastName'].errors.pattern" class="invalid-feedback">
+                            Lastname must be a valid name
                         </div>
                     </div>
                 </div>
@@ -100,7 +106,7 @@
                         Password is required
                     </div>
                     <div *ngIf="registerForm.controls['password'].errors.minlength" class="invalid-feedback">
-                        Password must be at least 6 characters
+                        Password must be at least 8 characters
                     </div>
                 </div>
 
