@@ -21,12 +21,12 @@ export class RegisterComponent implements OnInit {
   initForm(): void {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required,
-        Validators.pattern('([A-Z][a-zA-Z]*)')]],
-      middleName: ['', Validators.pattern('([A-Z][a-zA-Z]*)')],
+        Validators.pattern('([a-zA-Z]*)')]],
+      middleName: ['',Validators.pattern('([a-zA-Z]*)')],
       lastName: ['', [Validators.required,
-        Validators.pattern('([A-Z][a-zA-Z]*)')]],
+        Validators.pattern('([a-zA-Z]*)')]],
       email: ['', [Validators.required,
-        Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]],
+        Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
       password: ['', Validators.required],
     });
   }
