@@ -23,15 +23,15 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required,
       Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]],
       password: ['', Validators.required],
-      firstName: ['', Validators.required,
-      Validators.pattern('([A-Z][a-zA-Z]*)')],
+      firstName: ['', [Validators.required,
+      Validators.pattern('([A-Z][a-zA-Z]*)')]],
       middleName: ['', Validators.pattern('([A-Z][a-zA-Z]*)')],
-      lastName: ['', Validators.required,
-      Validators.pattern('([A-Z][a-zA-Z]*)')]
+      lastName: ['', [Validators.required,
+      Validators.pattern('([A-Z][a-zA-Z]*)')]]
     });
   }
 
-  isValidInput(fieldName): boolean {
+  isInValidInput(fieldName): boolean {
     return this.registerForm.controls[fieldName].invalid &&
       (this.registerForm.controls[fieldName].dirty || this.registerForm.controls[fieldName].touched);
 }
