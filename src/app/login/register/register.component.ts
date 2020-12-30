@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -9,22 +9,39 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  registerForm: FormGroup;
 
-  isError = false;
-  constructor(private authService: AuthService, private router: Router) { }
+
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForm();
   }
 
-  /// TODO: Please remove the timeout and fix it
-  onSubmit(form: NgForm) {
-    if(!this.authService.login({email: form.value.email, password: form.value.password})) {
-      setTimeout(() => {
-        this.isError = true;
-        form.reset();
-      }, 500)
+  initForm(): void {
+    this.registerForm = this.formBuilder.group({
+      email: ['', [Validators.required,
+      Validators.pattern('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$')]],
+      password: ['', Validators.required],
+      firstName: ['', Validators.required],
+      middleName: ['', Validators.required],
+      lastName: ['', Validators.required]
+    });
+  }
 
-    }
+  isValidInput(fieldName): boolean {
+    return this.registerForm.controls[fieldName].invalid &&
+      (this.registerForm.controls[fieldName].dirty || this.registerForm.controls[fieldName].touched);
+}
+
+  // TODO: Please remove the timeout and fix it
+  onSubmit() {
+    // if(!this.authService.login({email: form.value.email, password: form.value.password})) {
+    //   setTimeout(() => {
+    //     form.reset();
+    //   }, 500)
+
+    // }
   }
 
   cancel() {

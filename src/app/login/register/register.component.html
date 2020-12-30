@@ -1,6 +1,6 @@
 <div>
     <div class="container vertical-center">
-        <form class="container-fluid" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <form class="container-fluid" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <header>Register</header>
 
                 <div class="form-group col item">
@@ -10,12 +10,17 @@
                     <input
                         type="text"
                         placeholder="Fill in firstname"
-                        name="firstname"
+                        formControlName="firstName"
                         required
                         class="form-control"
                         ngModel
-                        [ngClass]="{'is-invalid' : isError}"
+                        [ngClass]="{ 'is-invalid': isValidInput('firstName') && registerForm.invalid }"
                     >
+                    <div *ngIf="isValidInput('firstName')">
+                        <div *ngIf="registerForm.controls['firstName'].errors.required" class="invalid-feedback">
+                            Firstname is required.
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group col item">
@@ -25,11 +30,15 @@
                     <input
                         type="text"
                         placeholder="Fill in middlename"
-                        name="middlename"
+                        formControlName="middleName"
                         class="form-control"
                         ngModel
-                        [ngClass]="{'is-invalid' : isError}"
                     >
+                    <div *ngIf="isValidInput('middleName')">
+                        <div *ngIf="registerForm.controls['middleName'].errors.invalid" class="invalid-feedback">
+                            Middlename is invalid.
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group col item">
@@ -38,13 +47,17 @@
                     </label>
                     <input
                         type="text"
-                        placeholder="Fill in lastname"
-                        name="lastname"
+                        placeholder="Fill in lastName"
+                        formControlName="lastname"
                         required
                         class="form-control"
                         ngModel
-                        [ngClass]="{'is-invalid' : isError}"
                     >
+                    <div *ngIf="isValidInput('LastName')">
+                        <div *ngIf="registerForm.controls['LastName'].errors.required" class="invalid-feedback">
+                            Lastname is required.
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group col item">
@@ -54,12 +67,19 @@
                     <input
                         type="email"
                         placeholder="Fill in emailadres"
-                        name="email"
+                        formControlName="email"
                         required
                         class="form-control"
                         ngModel
-                        [ngClass]="{'is-invalid' : isError}"
                     >
+                </div>
+                <div *ngIf="isValidInput('email')">
+                    <div *ngIf="registerForm.controls['email'].errors.required" class="invalid-feedback">
+                        Email is required.
+                    </div>
+                    <div *ngIf="registerForm.controls['email'].errors.pattern" class="invalid-feedback">
+                        Must be a valid email format.
+                    </div>
                 </div>
 
                 <div class="form-group col item item-last">
@@ -69,12 +89,16 @@
                     <input
                         type="password"
                         placeholder="Fill in password"
-                        name="password"
-                        required
+                        formControlName="password"
+                        required minlength="8"
                         class="form-control"
                         ngModel
-                        [ngClass]="{'is-invalid' : isError}"
                     >
+                </div>
+                <div *ngIf="isValidInput('password')">
+                    <div *ngIf="registerForm.controls['password'].errors.required" class="invalid-feedback">
+                        Password is required.
+                    </div>
                 </div>
 
             <button
@@ -87,7 +111,7 @@
             <button
                 type="submit"
                 class="btn float-right"
-                [disabled]="!form.valid"
+                [disabled]="!registerForm.valid"
             >
                 Register
             </button>
