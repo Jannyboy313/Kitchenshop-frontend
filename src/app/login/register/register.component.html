@@ -18,7 +18,7 @@
                     >
                     <div *ngIf="isValidInput('firstName')">
                         <div *ngIf="registerForm.controls['firstName'].errors.required" class="invalid-feedback">
-                            Firstname is required.
+                            Firstname is required
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     >
                     <div *ngIf="isValidInput('middleName')">
                         <div *ngIf="registerForm.controls['middleName'].errors.invalid" class="invalid-feedback">
-                            Middlename is invalid.
+                            Middlename is invalid
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                     >
                     <div *ngIf="isValidInput('LastName')">
                         <div *ngIf="registerForm.controls['LastName'].errors.required" class="invalid-feedback">
-                            Lastname is required.
+                            Lastname is required
                         </div>
                     </div>
                 </div>
@@ -75,10 +75,10 @@
                 </div>
                 <div *ngIf="isValidInput('email')">
                     <div *ngIf="registerForm.controls['email'].errors.required" class="invalid-feedback">
-                        Email is required.
+                        Email is required
                     </div>
                     <div *ngIf="registerForm.controls['email'].errors.pattern" class="invalid-feedback">
-                        Must be a valid email format.
+                        Must be a valid email format
                     </div>
                 </div>
 
@@ -97,7 +97,10 @@
                 </div>
                 <div *ngIf="isValidInput('password')">
                     <div *ngIf="registerForm.controls['password'].errors.required" class="invalid-feedback">
-                        Password is required.
+                        Password is required
+                    </div>
+                    <div *ngIf="registerForm.controls['password'].errors.minlength" class="invalid-feedback">
+                        Password must be at least 6 characters
                     </div>
                 </div>
 
