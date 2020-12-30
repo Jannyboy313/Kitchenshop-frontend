@@ -65,6 +65,73 @@
                     </div>
                 </div>
 
+
+                <div class="form-group col item">
+                    <label>
+                        City
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Fill in city"
+                        formControlName="city"
+                        required
+                        class="form-control"
+                        [ngClass]="{ 'is-invalid': isInValidInput('city') }"
+                    >
+                    <div *ngIf="isInValidInput('city')">
+                        <div *ngIf="registerForm.controls['city'].errors.required" class="invalid-feedback d-block">
+                            City is required
+                        </div>
+                        <div *ngIf="registerForm.controls['city'].errors.pattern" class="invalid-feedback d-block">
+                            City must be a valid name
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col item">
+                    <label>
+                        Street address
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Fill in street address"
+                        formControlName="street_address"
+                        required
+                        class="form-control"
+                        [ngClass]="{ 'is-invalid': isInValidInput('street_address') }"
+                    >
+                    <div *ngIf="isInValidInput('street_address')">
+                        <div *ngIf="registerForm.controls['street_address'].errors.required" class="invalid-feedback d-block">
+                            Street address is required
+                        </div>
+                        <div *ngIf="registerForm.controls['street_address'].errors.pattern" class="invalid-feedback d-block">
+                            Street address must be valid
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group col item">
+                    <label >
+                        Zipcode
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Fill in zipcode"
+                        formControlName="zipcode"
+                        required
+                        class="form-control"
+                        [ngClass]="{ 'is-invalid': isInValidInput('zipcode') }"
+                    >
+                    <div *ngIf="isInValidInput('zipcode')">
+                        <div *ngIf="registerForm.controls['zipcode'].errors.required" class="invalid-feedback d-block">
+                            Zipcode is required
+                        </div>
+                        <div *ngIf="registerForm.controls['zipcode'].errors.pattern" class="invalid-feedback d-block">
+                            Zipcode must be valid
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group col item">
                     <label>
                         Emailadres
