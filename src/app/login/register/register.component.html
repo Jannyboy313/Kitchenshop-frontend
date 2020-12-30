@@ -13,7 +13,6 @@
                         formControlName="firstName"
                         required
                         class="form-control"
-                        ngModel
                         [ngClass]="{ 'is-invalid': isInValidInput('firstName') }"
                     >
                     <div *ngIf="isInValidInput('firstName')">
@@ -35,7 +34,6 @@
                         placeholder="Fill in middlename"
                         formControlName="middleName"
                         class="form-control"
-                        ngModel
                         [ngClass]="{ 'is-invalid': isInValidInput('middleName') }"
                     >
                     <div *ngIf="isInValidInput('middleName')">
@@ -51,18 +49,17 @@
                     </label>
                     <input
                         type="text"
-                        placeholder="Fill in lastName"
-                        formControlName="lastname"
+                        placeholder="Fill in lastname"
+                        formControlName="lastName"
                         required
                         class="form-control"
-                        ngModel
                         [ngClass]="{ 'is-invalid': isInValidInput('lastName') }"
                     >
-                    <div *ngIf="isInValidInput('LastName')">
-                        <div *ngIf="registerForm.controls['LastName'].errors.required" class="invalid-feedback">
+                    <div *ngIf="isInValidInput('lastName')">
+                        <div *ngIf="registerForm.controls['lastName'].errors.required" class="invalid-feedback">
                             Lastname is required
                         </div>
-                        <div *ngIf="registerForm.controls['LastName'].errors.pattern" class="invalid-feedback">
+                        <div *ngIf="registerForm.controls['lastName'].errors.pattern" class="invalid-feedback">
                             Lastname must be a valid name
                         </div>
                     </div>
@@ -78,18 +75,18 @@
                         formControlName="email"
                         required
                         class="form-control"
-                        ngModel
                         [ngClass]="{ 'is-invalid': isInValidInput('email') }"
                     >
-                </div>
-                <div *ngIf="isInValidInput('email')">
-                    <div *ngIf="registerForm.controls['email'].errors.required" class="invalid-feedback">
-                        Email is required
+                    <div *ngIf="isInValidInput('email')">
+                        <div *ngIf="registerForm.controls['email'].errors.required" class="invalid-feedback">
+                            Email is required
+                        </div>
+                        <div *ngIf="registerForm.controls['email'].errors.pattern" class="invalid-feedback">
+                            Must be a valid email format
+                        </div>
                     </div>
-                    <div *ngIf="registerForm.controls['email'].errors.pattern" class="invalid-feedback">
-                        Must be a valid email format
-                    </div>
                 </div>
+
 
                 <div class="form-group col item item-last">
                     <label>
@@ -101,16 +98,15 @@
                         formControlName="password"
                         required minlength="8"
                         class="form-control"
-                        ngModel
                         [ngClass]="{ 'is-invalid': isInValidInput('password') }"
                     >
-                </div>
-                <div *ngIf="isInValidInput('password')">
-                    <div *ngIf="registerForm.controls['password'].errors.required" class="invalid-feedback">
-                        Password is required
-                    </div>
-                    <div *ngIf="registerForm.controls['password'].errors.minlength" class="invalid-feedback">
-                        Password must be at least 8 characters
+                    <div *ngIf="isInValidInput('password')">
+                        <div *ngIf="registerForm.controls['password'].errors.required" class="invalid-feedback">
+                            Password is required
+                        </div>
+                        <div *ngIf="registerForm.controls['password'].errors.minlength" class="invalid-feedback">
+                            Password must be at least 8 characters
+                        </div>
                     </div>
                 </div>
 
