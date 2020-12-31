@@ -189,8 +189,9 @@
             <button
                 type="submit"
                 class="btn float-right"
-                [disabled]="!registerForm.valid"
+                [disabled]="isLoading"
             >
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
                 Register
             </button>
         </form>
