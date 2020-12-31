@@ -67,7 +67,7 @@ export class RegisterComponent implements OnInit {
       "street_address": this.registerForm.controls['street_address'].value,
       "zipcode": this.registerForm.controls['zipcode'].value
     })
-    // api call
+    // api call en zorgen dat het volledige address word terug gegeven (Address_id)
   }
 
   cancel() {
