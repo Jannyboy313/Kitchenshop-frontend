@@ -1,7 +1,7 @@
 import { Deserializable } from "./deserializable.model";
 
 export class Address implements Deserializable {
-  address_id: string;
+  address_id: string = null;
   city: string;
   street_address: string;
   zipcode: string

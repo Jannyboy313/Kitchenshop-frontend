@@ -1,8 +1,8 @@
 import { Deserializable } from "./deserializable.model";
 
 export class User implements Deserializable {
-  role: string;
-  user_id: number;
+  role: string = null;
+  user_id: number = null;
   firstname: string;
   middlename: string;
   lastname: string;
