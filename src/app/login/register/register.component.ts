@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from '../../services/register.service';
+
+import { User } from '../../models/user.model';
+import { Address } from '../../models/address.model';
+import { deserialize } from 'v8';
 
 @Component({
   selector: 'app-register',
@@ -13,6 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   isError : boolean = false;
   errorMessage : string = 'Error not known';
+  isLoading: boolean = false;
 
   constructor(private router: Router, private formBuilder: FormBuilder, private registerService: RegisterService) { }
 
@@ -44,14 +48,26 @@ export class RegisterComponent implements OnInit {
       (this.registerForm.controls[fieldName].dirty || this.registerForm.controls[fieldName].touched);
   }
 
-  // TODO: Please remove the timeout and fix it
   onSubmit() {
-    // if(!this.authService.login({email: form.value.email, password: form.value.password})) {
-    //   setTimeout(() => {
-    //     form.reset();
-    //   }, 500)
+    // stop here if form is invalid
+    if (this.registerForm.invalid) {
+        return;
+    }
+    this.isLoading = true;
 
-    // }
+  }
+
+  createUser() {
+    // const user = new User().deserialize()
+  }
+
+  createAddress() {
+    const address = new Address().deserialize({
+      "city": this.registerForm.controls['city'].value,
+      "street_address": this.registerForm.controls['street_address'].value,
+      "zipcode": this.registerForm.controls['zipcode'].value
+    })
+    // api call
   }
 
   cancel() {
