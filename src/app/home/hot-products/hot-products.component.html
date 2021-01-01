@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="hotproducts">
         <div *ngFor="let hotProduct of hotProducts" class="box">
-            <div class="border rounded box">
+            <div class="border rounded box m-auto">
                 <h1>{{hotProduct.name}}</h1>
                 <img src=`${hotProduct.image}` class="img-fluid" *ngIf="hotProduct.image !== null">
                 <img src="../../../assets/img/placeholder.jpg" class="img-fluid" *ngIf="hotProduct.image === null">
