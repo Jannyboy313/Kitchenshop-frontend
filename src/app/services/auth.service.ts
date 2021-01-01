@@ -23,7 +23,7 @@ export class AuthService {
           this.loginUser(email, value.role, value.token);
           this.router.navigate(['/home']);
           if (this.getUser().role === 'admin'){
-            this.router.navigate(['/admin']);
+            this.router.navigate(['/home']);
           }
           isSuccess = true;
         },
