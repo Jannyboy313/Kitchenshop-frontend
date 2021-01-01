@@ -8,7 +8,7 @@ export class User implements Deserializable {
   lastname: string;
   email: string;
   password: string;
-  address_id: string;
+  address_id: string = null;
 
   deserialize(input: any) {
     Object.assign(this, input);
