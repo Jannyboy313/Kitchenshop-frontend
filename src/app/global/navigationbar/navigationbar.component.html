@@ -32,7 +32,7 @@
 
           <a class="nav-item nav-link"
           routerLink="/home"
-          (click)="isCollapsed = true"
+          (click)="isCollapsed = true && logout()"
           *ngIf="isLoggedIn()">Logout</a>
 
         </div>
