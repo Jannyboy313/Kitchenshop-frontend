@@ -2,7 +2,7 @@
     <div class="container vertical-center">
         <form class="container-fluid" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <header>Register</header>
-            <div *ngIf="isError" class="invalid-feedback d-block">
+            <div *ngIf="isError" class="alert alert-danger">
                 {{errorMessage}}
             </div>
             <div class="form-group col item">
@@ -12,16 +12,16 @@
                 <input
                     type="text"
                     placeholder="Fill in firstname"
-                    formControlName="firstName"
+                    formControlName="firstname"
                     required
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('firstName') }"
+                    [ngClass]="{ 'is-invalid': isInValidInput('firstname') || isError }"
                 >
-                <div *ngIf="isInValidInput('firstName')">
-                    <div *ngIf="registerForm.controls['firstName'].errors.required" class="invalid-feedback d-block">
+                <div *ngIf="isInValidInput('firstname')">
+                    <div *ngIf="registerForm.controls['firstname'].errors.required" class="invalid-feedback d-block">
                         Firstname is required
                     </div>
-                    <div *ngIf="registerForm.controls['firstName'].errors.pattern" class="invalid-feedback d-block">
+                    <div *ngIf="registerForm.controls['firstname'].errors.pattern" class="invalid-feedback d-block">
                         Firstname must be a valid name
                     </div>
                 </div>
@@ -34,12 +34,12 @@
                 <input
                     type="text"
                     placeholder="Fill in middlename"
-                    formControlName="middleName"
+                    formControlName="middlename"
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('middleName') }"
+                    [ngClass]="{ 'is-invalid': isInValidInput('middlename')  || isError}"
                 >
-                <div *ngIf="isInValidInput('middleName')">
-                    <div *ngIf="registerForm.controls['middleName'].errors.pattern" class="invalid-feedback d-block">
+                <div *ngIf="isInValidInput('middlename')">
+                    <div *ngIf="registerForm.controls['middlename'].errors.pattern" class="invalid-feedback d-block">
                         Middlename must be a valid name
                     </div>
                 </div>
@@ -52,16 +52,16 @@
                 <input
                     type="text"
                     placeholder="Fill in lastname"
-                    formControlName="lastName"
+                    formControlName="lastname"
                     required
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('lastName') }"
+                    [ngClass]="{ 'is-invalid': isInValidInput('lastname')  || isError}"
                 >
-                <div *ngIf="isInValidInput('lastName')">
-                    <div *ngIf="registerForm.controls['lastName'].errors.required" class="invalid-feedback d-block">
+                <div *ngIf="isInValidInput('lastname')">
+                    <div *ngIf="registerForm.controls['lastname'].errors.required" class="invalid-feedback d-block">
                         Lastname is required
                     </div>
-                    <div *ngIf="registerForm.controls['lastName'].errors.pattern" class="invalid-feedback d-block">
+                    <div *ngIf="registerForm.controls['lastname'].errors.pattern" class="invalid-feedback d-block">
                         Lastname must be a valid name
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                     formControlName="city"
                     required
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('city') }"
+                    [ngClass]="{ 'is-invalid': isInValidInput('city')  || isError}"
                 >
                 <div *ngIf="isInValidInput('city')">
                     <div *ngIf="registerForm.controls['city'].errors.required" class="invalid-feedback d-block">
@@ -100,7 +100,7 @@
                     formControlName="street_address"
                     required
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('street_address') }"
+                    [ngClass]="{ 'is-invalid': isInValidInput('street_address')  || isError}"
                 >
                 <div *ngIf="isInValidInput('street_address')">
                     <div *ngIf="registerForm.controls['street_address'].errors.required" class="invalid-feedback d-block">
@@ -122,7 +122,7 @@
                     formControlName="zipcode"
                     required
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('zipcode') }"
+                    [ngClass]="{ 'is-invalid': isInValidInput('zipcode')  || isError}"
                 >
                 <div *ngIf="isInValidInput('zipcode')">
                     <div *ngIf="registerForm.controls['zipcode'].errors.required" class="invalid-feedback d-block">
@@ -144,7 +144,7 @@
                     formControlName="email"
                     required
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('email') }"
+                    [ngClass]="{ 'is-invalid': isInValidInput('email')  || isError}"
                 >
                 <div *ngIf="isInValidInput('email')">
                     <div *ngIf="registerForm.controls['email'].errors.required" class="invalid-feedback d-block">
@@ -167,7 +167,7 @@
                     formControlName="password"
                     required minlength="8"
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('password') }"
+                    [ngClass]="{ 'is-invalid': isInValidInput('password')  || isError}"
                 >
                 <div *ngIf="isInValidInput('password')">
                     <div *ngIf="registerForm.controls['password'].errors.required" class="invalid-feedback d-block">

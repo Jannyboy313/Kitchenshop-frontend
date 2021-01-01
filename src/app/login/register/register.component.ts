@@ -25,10 +25,10 @@ export class RegisterComponent implements OnInit {
 
   initForm(): void {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', [Validators.required,
+      firstname: ['', [Validators.required,
         Validators.pattern('([a-zA-Z]*)')]],
-      middleName: ['',Validators.pattern('([a-zA-Z]*)')],
-      lastName: ['', [Validators.required,
+      middlename: ['',Validators.pattern('([a-zA-Z]*)')],
+      lastname: ['', [Validators.required,
         Validators.pattern('([a-zA-Z]*)')]],
       city: ['', [Validators.required,
         Validators.pattern('([a-zA-Z]*)')]],
@@ -48,8 +48,10 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    // stop here if form is invalid
+    this.isError = false;
     if (this.registerForm.invalid) {
+        this.isError = true
+        this.errorMessage = "Missing data fields"
         return;
     }
     this.isLoading = true;
@@ -62,7 +64,7 @@ export class RegisterComponent implements OnInit {
       },
       error: error => {
           this.isError = true;
-          this.errorMessage = error;
+          this.errorMessage = error.error.error;
           this.isLoading = false;
       }
   });
