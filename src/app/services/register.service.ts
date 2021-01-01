@@ -15,20 +15,7 @@ export class RegisterService {
   constructor(private http: HttpClient, private router: Router, private authService: AuthService) {}
 
   register(user: User, address: Address) : any {
-    let status: {"isSuccess": boolean, "error": string};
-    this.http.post<any>(environment.apiUrl + "/register",
-    {"user": user, "address": address})
-      .subscribe(
-        (value) => {
-          this.router.navigate(['/login']);
-          status.isSuccess = true;
-        },
-        response => {
-          console.log("err", response);
-          status.isSuccess = false;
-          status.error = response.error;
-        }
-      );
-      return status
+    return this.http.post<any>(environment.apiUrl + "/register",
+    {"user": user, "address": address});
   }
 }
