@@ -5,7 +5,6 @@ import { RegisterService } from '../../services/register.service';
 
 import { User } from '../../models/user.model';
 import { Address } from '../../models/address.model';
-import { deserialize } from 'v8';
 
 @Component({
   selector: 'app-register',
