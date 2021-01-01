@@ -36,7 +36,7 @@
                     placeholder="Fill in middlename"
                     formControlName="middlename"
                     class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('middlename')  || isError}"
+                    [ngClass]="{ 'is-invalid': isInValidInput('middlename')}"
                 >
                 <div *ngIf="isInValidInput('middlename')">
                     <div *ngIf="registerForm.controls['middlename'].errors.pattern" class="invalid-feedback d-block">
