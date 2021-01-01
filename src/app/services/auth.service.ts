@@ -40,6 +40,11 @@ export class AuthService {
     return {"username": this.user, "role": this.role};
   }
 
+  isAdmin() {
+    if (this.role === 'admin')
+      return true;
+  }
+
   logout() {
     this.user = null;
     this.role = null;
