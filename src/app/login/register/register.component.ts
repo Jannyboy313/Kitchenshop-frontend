@@ -53,20 +53,33 @@ export class RegisterComponent implements OnInit {
         return;
     }
     this.isLoading = true;
+    const user = this.createUser();
+    const address = this.createAddress();
+    this.registerService.register(user, address)
+    .subscribe({
+      next: () => {
+          this.router.navigate(['/login']);
+      },
+      error: error => {
+          this.isError = true;
+          this.errorMessage = error;
+          this.isLoading = false;
+      }
+  });
 
   }
 
-  createUser() {
-    // const user = new User().deserialize()
+  createUser(): User {
+    return new User().deserialize(this.registerForm.value)
   }
 
-  createAddress() {
-    const address = new Address().deserialize({
-      "city": this.registerForm.controls['city'].value,
-      "street_address": this.registerForm.controls['street_address'].value,
-      "zipcode": this.registerForm.controls['zipcode'].value
-    })
-    // api call en zorgen dat het volledige address word terug gegeven (Address_id)
+  createAddress(): Address {
+    return new Address().deserialize(this.registerForm.value)
+  }
+
+  clearErrors() {
+    this.isError = false;
+    this.errorMessage = 'Error not known';
   }
 
   cancel() {
