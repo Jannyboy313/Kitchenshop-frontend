@@ -66,7 +66,7 @@ export class CartComponent implements OnInit {
     this.updateItems();
   }
 
-  totalPriceItem(item: Product) {
+  getTotalPriceItem(item: Product) {
     return parseFloat(item.price) * this.getAmount(item)
   }
 

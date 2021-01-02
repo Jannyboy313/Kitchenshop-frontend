@@ -28,6 +28,17 @@
     flex-direction: row;
 }
 
+.totalAmountItem {
+    float: right;
+}
+
+.multiply-icon {
+    font-size: 10px;
+}
+.multiply-icon:before {
+    padding-bottom: 3px;
+}
+
 @media only screen and (max-width: 768px) {
     #cartColumn {
         margin-left: 5px;
