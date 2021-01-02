@@ -47,7 +47,7 @@ export class CartService {
   }
 
   removeItem(removeItem: Product) {
-    for(let i=0; i < this.itemsInCart.length; i++) {
+    for(let i=this.itemsInCart.length-1; i >= 0; i--) {
       if (this.itemsInCart[i].productnumber === removeItem.productnumber) {
         this.itemsInCart.splice(i,1);
         return;
