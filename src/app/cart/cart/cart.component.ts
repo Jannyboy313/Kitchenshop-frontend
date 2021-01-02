@@ -1,4 +1,3 @@
-import { NonNullAssert } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { CartService } from '../../services/cart.service';
@@ -46,6 +45,10 @@ export class CartComponent implements OnInit {
         this.filteredItemsArray.push(item);
       }
     })
+  }
+
+  getAmount(item: Product) {
+    return this.amountItems.get(item.productnumber);
   }
 
 }
