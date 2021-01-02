@@ -39,6 +39,10 @@
     padding-bottom: 3px;
 }
 
+.btn-primary {
+    padding: 5px 10px;
+}
+
 @media only screen and (max-width: 768px) {
     #cartColumn {
         margin-left: 5px;
