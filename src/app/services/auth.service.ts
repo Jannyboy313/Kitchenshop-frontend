@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from "../../environments/environment";
 
+import { PreviousRouteService } from './previous-route.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +14,7 @@ export class AuthService {
   private user: string;
   private role: string;
 
-  constructor(private http: HttpClient, private router: Router,) {}
+  constructor(private http: HttpClient, private router: Router, private previousRouteService: PreviousRouteService) {}
 
   login({ email, password }) : boolean {
     let isSuccess: boolean;
@@ -21,10 +23,7 @@ export class AuthService {
       .subscribe(
         (value) => {
           this.loginUser(email, value.role, value.token);
-          this.router.navigate(['/home']);
-          if (this.getUser().role === 'admin'){
-            this.router.navigate(['/home']);
-          }
+          this.routeUser();
           isSuccess = true;
         },
         response => {
@@ -35,6 +34,15 @@ export class AuthService {
       return isSuccess
   }
 
+  routeUser() {
+    if (this.getUser().role === 'admin'){
+      this.router.navigate(['/home']); // TODO Change to admin route
+    } else if(this.isAtCheckout()) {
+      this.router.navigate(['/cart']);
+    } else {
+      this.router.navigate(['/home']);
+    }
+  }
 
   getUser() {
     return {"username": this.user, "role": this.role};
@@ -67,6 +75,15 @@ export class AuthService {
 
   private storeJwtToken(jwt: string) {
     localStorage.setItem(this.JWT_TOKEN, jwt);
+  }
+
+  private isAtCheckout() {
+    if(
+      this.previousRouteService.getHistoryUrl(1) === '/cart' ||
+      this.previousRouteService.getHistoryUrl(3) === '/cart' &&
+      this.previousRouteService.getHistoryUrl(1) === '/register'
+      )
+      return true;
   }
 
 }

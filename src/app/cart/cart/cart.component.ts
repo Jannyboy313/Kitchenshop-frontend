@@ -93,7 +93,7 @@ export class CartComponent implements OnInit {
 
   checkout() {
     if (!this.authservice.isLoggedIn()) {
-      this.router.navigate(['/register'])
+      this.router.navigate(['/login'])
     }
   }
 
