@@ -46,13 +46,13 @@ export class CartService {
     this.itemsInCart.push(item);
   }
 
-  removeItem(item: Product) {
-    this.itemsInCart.forEach((value, index) => {
-      if (item.productnumber === value.productnumber) {
-        this.itemsInCart.splice(index, 1);
+  removeItem(removeItem: Product) {
+    for(let i=0; i < this.itemsInCart.length; i++) {
+      if (this.itemsInCart[i].productnumber === removeItem.productnumber) {
+        this.itemsInCart.splice(i,1);
         return;
       }
-    })
+    }
   }
 
   getItems() {
