@@ -8,21 +8,21 @@ import { CartService } from '../../services/cart.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  itemsArray: Product[] = [];
-  filteredItemsArray: Product[] = [];
+  items: Product[] = [];
+  filteredItems: Product[] = [];
   amountItems = new Map();
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
-    this.itemsArray = this.cartService.getItems();
+    this.items = this.cartService.getItems();
     this.getAmountItems();
     this.removeDuplicates()
   }
 
   getAmountItems() {
     let itemsMap = new Map();
-    this.itemsArray.forEach((item) => {
+    this.items.forEach((item) => {
       if (itemsMap.has(item.productnumber)) {
         let count = itemsMap.get(item.productnumber) + 1;
         itemsMap.set(item.productnumber, count);
@@ -33,16 +33,16 @@ export class CartComponent implements OnInit {
   }
 
   removeDuplicates() {
-    this.itemsArray.forEach((item) => {
+    this.items.forEach((item) => {
       let exists = 0;
       console.log(item)
-      this.filteredItemsArray.forEach(element => {
+      this.filteredItems.forEach(element => {
         if (element.productnumber === item.productnumber) {
           exists++;
         }
       });
       if (exists === 0) {
-        this.filteredItemsArray.push(item);
+        this.filteredItems.push(item);
       }
     })
   }
