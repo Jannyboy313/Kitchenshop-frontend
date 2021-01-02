@@ -25,6 +25,7 @@ export class CartComponent implements OnInit {
   }
 
   setAmountItems() {
+    this.amountItems.clear()
     this.items.forEach((item) => {
       if (this.amountItems.has(item.productnumber)) {
         let count = this.amountItems.get(item.productnumber) + 1;
@@ -36,6 +37,7 @@ export class CartComponent implements OnInit {
   }
 
   removeDuplicates() {
+    this.filteredItems = [];
     this.items.forEach((item) => {
       let exists = 0;
       this.filteredItems.forEach(element => {
