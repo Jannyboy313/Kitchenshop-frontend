@@ -5,24 +5,62 @@ import { Product } from '../models/product.model';
   providedIn: 'root'
 })
 export class CartService {
-  productsInCart = [];
+  private itemsInCart: Product[] = [
+    new Product().deserialize({
+      "productnumber": 1,
+      "name": "Product number 1",
+      "description": "This is a very nice product that you should buy later",
+      "price": "10,99",
+      "stock": "10",
+      "category": "Boeken",
+    }),
+    new Product().deserialize({
+      "productnumber": 2,
+      "name": "Product number 2",
+      "description": "This is a very nice product that you should buy later",
+      "price": "10,99",
+      "stock": "10",
+      "category": "Boeken",
+    }),
+    new Product().deserialize({
+      "productnumber": 3,
+      "name": "Product number 3",
+      "description": "This is a very nice product that you should buy later",
+      "price": "10,99",
+      "stock": "10",
+      "category": "Boeken",
+    }),
+    new Product().deserialize({
+      "productnumber": 2,
+      "name": "Product number 2",
+      "description": "This is a very nice product that you should buy later",
+      "price": "10,99",
+      "stock": "10",
+      "category": "Boeken",
+    }),
+  ];
 
   constructor() { }
 
-  addProduct(product: Product) {
-    this.productsInCart.push(product);
+  addItem(item: Product) {
+    this.itemsInCart.push(item);
   }
 
-  removeProduct(product: Product) {
-    this.productsInCart.forEach((item, index) => {
-      if (product.productnumber === item.productnumber) {
-        this.productsInCart.splice(index, 1);
+  removeI(item: Product) {
+    this.itemsInCart.forEach((value, index) => {
+      if (item.productnumber === value.productnumber) {
+        this.itemsInCart.splice(index, 1);
         return;
       }
     })
   }
 
-  clearCart() {
-    this.productsInCart = [];
+  getItems() {
+    return this.itemsInCart;
   }
+
+  clearCart() {
+    this.itemsInCart = [];
+  }
+
 }
