@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { parse } from 'url';
 import { CartService } from '../../services/cart.service';
 
@@ -13,7 +15,7 @@ export class CartComponent implements OnInit {
   filteredItems: Product[] = [];
   amountItems = new Map();
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private authservice: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.updateItems();
@@ -87,6 +89,12 @@ export class CartComponent implements OnInit {
     number = number * 100;
     number = Math.trunc(number);
     return number / 100;
+  }
+
+  checkout() {
+    if (!this.authservice.isLoggedIn()) {
+      this.router.navigate(['/register'])
+    }
   }
 
 }
