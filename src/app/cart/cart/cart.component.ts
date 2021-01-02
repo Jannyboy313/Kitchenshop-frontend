@@ -49,4 +49,12 @@ export class CartComponent implements OnInit {
     return this.amountItems.get(item.productnumber);
   }
 
+  addItem(item: Product) {
+    this.cartService.addItem(item);
+  }
+
+  removeItem(item: Product) {
+    this.cartService.removeItem(item);
+  }
+
 }
