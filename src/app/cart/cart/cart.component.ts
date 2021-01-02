@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
+import { parse } from 'url';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -63,6 +64,14 @@ export class CartComponent implements OnInit {
   removeItem(item: Product) {
     this.cartService.removeItem(item);
     this.updateItems();
+  }
+
+  totalPriceItem(item: Product) {
+    return parseFloat(item.price) * this.getAmount(item)
+  }
+
+  totalPriceCart() {
+    return 10;
   }
 
 }
