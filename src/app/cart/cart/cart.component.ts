@@ -16,18 +16,17 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = this.cartService.getItems();
-    this.getAmountItems();
+    this.setAmountItems();
     this.removeDuplicates()
   }
 
-  getAmountItems() {
-    let itemsMap = new Map();
+  setAmountItems() {
     this.items.forEach((item) => {
-      if (itemsMap.has(item.productnumber)) {
-        let count = itemsMap.get(item.productnumber) + 1;
-        itemsMap.set(item.productnumber, count);
+      if (this.amountItems.has(item.productnumber)) {
+        let count = this.amountItems.get(item.productnumber) + 1;
+        this.amountItems.set(item.productnumber, count);
       } else {
-        itemsMap.set(item.productnumber, 1);
+        this.amountItems.set(item.productnumber, 1);
       }
     })
   }
@@ -35,7 +34,6 @@ export class CartComponent implements OnInit {
   removeDuplicates() {
     this.items.forEach((item) => {
       let exists = 0;
-      console.log(item)
       this.filteredItems.forEach(element => {
         if (element.productnumber === item.productnumber) {
           exists++;
