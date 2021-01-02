@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Order } from 'src/app/models/order.model';
 import { Product } from 'src/app/models/product.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { parse } from 'url';
@@ -96,5 +97,12 @@ export class CartComponent implements OnInit {
       this.router.navigate(['/login'])
     }
   }
+
+  // createOrders() {
+  //   let orders: Order[];
+  //   this.items.forEach((item) => {
+  //     orders.push(new Order().deserialize({"user_id": this.authservice.getUser.id}))
+  //   })
+  // }
 
 }
