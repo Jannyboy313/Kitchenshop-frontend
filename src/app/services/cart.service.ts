@@ -59,6 +59,10 @@ export class CartService {
     return this.itemsInCart;
   }
 
+  getTotal() {
+    return this.itemsInCart.length;
+  }
+
   clearCart() {
     this.itemsInCart = [];
   }
