@@ -35,6 +35,16 @@
                     <div class="totalAmountItem">&#x20ac;{{getTotalPriceItem(item)}}</div>
                 </div>
             </div>
+            <div class="card-body">
+                <h5 class="card-title">Grand total</h5>
+                <div class="card-text">VAT: 21%</div>
+                <div class="card-text">
+                    Price without VAT: &#x20ac;{{getTotalPriceWithoutVat()}}
+                </div>
+                <div class="card-text">
+                    Total price: &#x20ac;{{getTotalPrice()}}
+                </div>
+            </div>
         </div>
     </div>
 </main>

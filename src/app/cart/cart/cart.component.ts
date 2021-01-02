@@ -70,8 +70,23 @@ export class CartComponent implements OnInit {
     return parseFloat(item.price) * this.getAmount(item);
   }
 
-  totalPriceCart() {
-    return 10;
+  getTotalPrice() {
+    let totalPrice = 0;
+    for (let i=0; i < this.items.length; i++) {
+      totalPrice += parseFloat(this.items[i].price);
+    }
+    return this.roundToTwoDecimals(totalPrice);
+  }
+
+  getTotalPriceWithoutVat() {
+    let totalPrice = this.getTotalPrice() * 0.79
+    return this.roundToTwoDecimals(totalPrice);
+  }
+
+  roundToTwoDecimals(number) {
+    number = number * 100;
+    number = Math.trunc(number);
+    return number / 100;
   }
 
 }
