@@ -10,6 +10,24 @@
     max-width: 60%;
 }
 
+#amount {
+    margin: auto;
+    padding: 0 8px;
+    border-width: 1px;
+    border-color: lightgrey;
+    border-left-style: solid;
+    border-right-style: solid;
+}
+
+.btn {
+    margin: auto;
+    padding: 0 8px
+}
+
+#productAdjust {
+    flex-direction: row;
+}
+
 @media only screen and (max-width: 768px) {
     #cartColumn {
         margin-left: 5px;
