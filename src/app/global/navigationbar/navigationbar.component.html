@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md nav-color">
     <a class="navbar-brand font titleColor" routerLink="/home" href="">Piscines</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
@@ -17,7 +17,7 @@
           routerLink="/home"
           (click)="isCollapsed = true">About us</a>
         </div>
-        
+
         <div class="navbar-nav justify-content-end">
 
           <a class="nav-item nav-link"
@@ -26,13 +26,13 @@
           *ngIf="isAdmin()">Admin</a>
 
           <a class="nav-item nav-link"
-          routerLink="/home"
+          routerLink="/login"
           (click)="isCollapsed = true"
           *ngIf="!isLoggedIn()">Login</a>
 
           <a class="nav-item nav-link"
           routerLink="/home"
-          (click)="isCollapsed = true"
+          (click)="isCollapsed = true && logout()"
           *ngIf="isLoggedIn()">Logout</a>
 
         </div>

@@ -18,7 +18,8 @@ img {
 
 .box {
     padding: 20px;
-    max-width: 75%;
+    max-width: 80%;
+    margin: auto;
 }
 
 
@@ -32,9 +33,6 @@ img {
     .hotproducts {
         flex-direction: column;
     }
-    .box {
-        margin: auto;
-    }
 
 }
 
@@ -47,5 +45,8 @@ img {
     }
     p {
         font-size: 15px;
+    }
+    .box {
+        max-width: 93%;
     }
 }
