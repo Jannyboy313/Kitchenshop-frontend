@@ -15,6 +15,10 @@ export class CartComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
+    this.updateItems();
+  }
+
+  updateItems() {
     this.items = this.cartService.getItems();
     this.setAmountItems();
     this.removeDuplicates()
@@ -51,10 +55,12 @@ export class CartComponent implements OnInit {
 
   addItem(item: Product) {
     this.cartService.addItem(item);
+    this.updateItems();
   }
 
   removeItem(item: Product) {
     this.cartService.removeItem(item);
+    this.updateItems();
   }
 
 }
