@@ -35,6 +35,14 @@
           (click)="isCollapsed = true && logout()"
           *ngIf="isLoggedIn()">Logout</a>
 
+          <a class="nav-item nav-link"
+          routerLink="/cart"
+          (click)="isCollapsed = true"
+          >
+            <i class="bi bi-cart"></i>
+          </a>
+
+
         </div>
     </div>
 
