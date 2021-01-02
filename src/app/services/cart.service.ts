@@ -46,7 +46,7 @@ export class CartService {
     this.itemsInCart.push(item);
   }
 
-  removeI(item: Product) {
+  removeItem(item: Product) {
     this.itemsInCart.forEach((value, index) => {
       if (item.productnumber === value.productnumber) {
         this.itemsInCart.splice(index, 1);
