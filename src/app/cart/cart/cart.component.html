@@ -4,14 +4,14 @@
             <div class="card-header">
                 <h3 class="card-title">Items</h3>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Product name</h5>
-                <p class="card-text">Description about the thingy</p>
+            <div class="card-body" *ngFor="let item of filteredItems">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.description}}</p>
                 <div id="productAdjust" class="float-right card">
                     <button class="btn">
                         <i class="bi bi-dash"></i>
                     </button>
-                    <p id="amount">100</p>
+                    <p id="amount">{{getAmount(item)}}</p>
                     <button class="btn">
                         <i class="bi bi-plus"></i>
                     </button>
