@@ -8,11 +8,11 @@
                 <h5 class="card-title">{{item.name}}</h5>
                 <p class="card-text">{{item.description}}</p>
                 <div id="productAdjust" class="float-right card">
-                    <button class="btn">
+                    <button class="btn" (click)="removeItem(item)">
                         <i class="bi bi-dash"></i>
                     </button>
                     <p id="amount">{{getAmount(item)}}</p>
-                    <button class="btn">
+                    <button class="btn" (click)="addItem(item)">
                         <i class="bi bi-plus"></i>
                     </button>
                 </div>
