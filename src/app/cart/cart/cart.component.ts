@@ -18,8 +18,8 @@ export class CartComponent implements OnInit {
     this.updateItems();
   }
 
-  updateItems() {
-    this.items = this.cartService.getItems();
+  updateItems = async() =>{
+    this.items = await this.cartService.getItems();
     this.setAmountItems();
     this.removeDuplicates()
   }
