@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from "../../environments/environment";
+import { User } from '../models/user.model';
 
 import { PreviousRouteService } from './previous-route.service';
 
@@ -11,8 +12,7 @@ import { PreviousRouteService } from './previous-route.service';
 export class AuthService {
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private user: string;
-  private role: string;
+  private user: User = null;
 
   constructor(private http: HttpClient, private router: Router, private previousRouteService: PreviousRouteService) {}
 
@@ -22,7 +22,7 @@ export class AuthService {
     {"email": email, "password": password})
       .subscribe(
         (value) => {
-          this.loginUser(email, value.role, value.token);
+          this.loginUser(new User().deserialize(value), value.token);
           this.routeUser();
           isSuccess = true;
         },
@@ -45,17 +45,16 @@ export class AuthService {
   }
 
   getUser() {
-    return {"username": this.user, "role": this.role};
+    return this.user;
   }
 
   isAdmin() {
-    if (this.role === 'admin')
+    if (this.user.role === 'admin')
       return true;
   }
 
   logout() {
     this.user = null;
-    this.role = null;
     localStorage.removeItem(this.JWT_TOKEN);
   }
 
@@ -67,9 +66,8 @@ export class AuthService {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
-  private loginUser(username: string, role: string, jwt: string) {
-    this.user = username;
-    this.role = role;
+  private loginUser(user: User, jwt: string) {
+    this.user = user;
     this.storeJwtToken(jwt);
   }
 
