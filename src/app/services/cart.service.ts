@@ -55,11 +55,11 @@ export class CartService {
     }
   }
 
-  getItems() {
+  getItemsInCart() {
     return this.itemsInCart;
   }
 
-  getTotal() {
+  getTotalLength() {
     return this.itemsInCart.length;
   }
 

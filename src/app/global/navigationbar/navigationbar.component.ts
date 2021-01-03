@@ -29,7 +29,7 @@ export class NavigationbarComponent implements OnInit {
   }
 
   getTotalItems() {
-    return this.cartService.getTotal();
+    return this.cartService.getTotalLength();
   }
 
 }
