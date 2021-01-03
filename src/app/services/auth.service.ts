@@ -44,7 +44,7 @@ export class AuthService {
     }
   }
 
-  getUser() {
+  getUser(): User {
     return this.user;
   }
 
