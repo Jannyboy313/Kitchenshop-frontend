@@ -98,11 +98,11 @@ export class CartComponent implements OnInit {
     }
   }
 
-  // createOrders() {
-  //   let orders: Order[];
-  //   this.items.forEach((item) => {
-  //     orders.push(new Order().deserialize({"user_id": this.authservice.getUser.id}))
-  //   })
-  // }
-
+  createOrders() {
+    let orders: Order[];
+    this.items.forEach((item) => {
+      orders.push(new Order().deserialize({"user_id": this.authservice.getUser().user_id, "productnumber": item.productnumber}))
+    })
+  }
+  
 }
