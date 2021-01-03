@@ -39,8 +39,12 @@ export class AuthService {
   }
 
   isAdmin() {
-    if (this.user.role === 'admin')
+    if (!this.user) {
+      return false;
+    }else if (this.user.role === 'admin') {
       return true;
+    }
+    return false;
   }
 
   logout() {
