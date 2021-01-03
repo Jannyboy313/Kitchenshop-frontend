@@ -22,7 +22,7 @@ export class AuthService {
     {"email": email, "password": password})
       .subscribe(
         (value) => {
-          this.loginUser(new User().deserialize(value), value.token);
+          this.loginUser(new User().deserialize(value.User), value.token);
           this.routeUser();
           isSuccess = true;
         },
@@ -32,16 +32,6 @@ export class AuthService {
         }
       );
       return isSuccess
-  }
-
-  routeUser() {
-    if (this.getUser().role === 'admin'){
-      this.router.navigate(['/home']); // TODO Change to admin route
-    } else if(this.isAtCheckout()) {
-      this.router.navigate(['/cart']);
-    } else {
-      this.router.navigate(['/home']);
-    }
   }
 
   getUser(): User {
@@ -73,6 +63,16 @@ export class AuthService {
 
   private storeJwtToken(jwt: string) {
     localStorage.setItem(this.JWT_TOKEN, jwt);
+  }
+
+  private routeUser() {
+    if (this.getUser().role === 'admin'){
+      this.router.navigate(['/home']); // TODO Change to admin route
+    } else if(this.isAtCheckout()) {
+      this.router.navigate(['/cart']);
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
 
   private isAtCheckout() {
