@@ -16,22 +16,15 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router, private previousRouteService: PreviousRouteService) {}
 
-  login({ email, password }) : boolean {
-    let isSuccess: boolean;
-    this.http.post<any>(environment.apiUrl + "/login",
-    {"email": email, "password": password})
-      .subscribe(
-        (value) => {
-          this.loginUser(new User().deserialize(value.User), value.token);
-          this.routeUser();
-          isSuccess = true;
-        },
-        response => {
-          console.log("errr", response);
-          isSuccess = false;
-        }
-      );
-      return isSuccess
+  postLogin({ email, password }) {
+    return this.http.post<any>(environment.apiUrl + "/login",
+    {"email": email, "password": password});
+  }
+
+  loginUser(user: User, jwt: string) {
+    this.user = user;
+    this.storeJwtToken(jwt);
+    this.routeUser();
   }
 
   getUser(): User {
@@ -58,11 +51,6 @@ export class AuthService {
 
   getJwtToken() {
     return localStorage.getItem(this.JWT_TOKEN);
-  }
-
-  private loginUser(user: User, jwt: string) {
-    this.user = user;
-    this.storeJwtToken(jwt);
   }
 
   private storeJwtToken(jwt: string) {
