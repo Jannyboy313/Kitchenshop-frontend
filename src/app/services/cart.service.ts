@@ -69,6 +69,7 @@ export class CartService {
 
   clearCart() {
     this.itemsInCart = [];
+    this.orders = [];
   }
 
   setOrders(orders) {
