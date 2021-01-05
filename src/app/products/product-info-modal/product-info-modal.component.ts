@@ -43,7 +43,7 @@ export class ProductInfoModalComponent implements OnInit, OnDestroy {
     this.isShown = false;
   }
 
-  getMoneyAmount(): number{
-    return this.cartService.getTotalPrice();
+  addToCart(): void{
+    this.cartService.addItem(this.product);
   }
 }
