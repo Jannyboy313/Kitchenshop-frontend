@@ -9,7 +9,7 @@
                     <li class="list-group-item"><h6>Price: <strong>&#x20ac;{{product.price}}</strong></h6></li>
                   </ul>
                 <button class="btn btn-outline-primary"
-                        [disabled]="true">
+                        (click)="openInfoModal(product)">
                     More Info
                 </button>
                 <button class="btn btn-primary float-right"
@@ -17,6 +17,7 @@
                   Add to cart
                 </button>
             </div>
+            <app-product-info-modal id="{{product.name}}" product="{{product}}"></app-product-info-modal>
         </div>
     </div>
 </main>
