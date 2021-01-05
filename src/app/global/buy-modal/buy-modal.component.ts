@@ -6,7 +6,7 @@ import { ModalService } from 'src/app/services/modal.service';
   templateUrl: './buy-modal.component.html',
   styleUrls: ['./buy-modal.component.css']
 })
-export class BuyModalComponent implements OnInit, OnDestroy {
+export class BuyModalComponent implements OnInit {
   @Input() id: string;
   private element: any;
   isShown = false;
@@ -21,18 +21,7 @@ export class BuyModalComponent implements OnInit, OnDestroy {
           return;
       }
       document.body.appendChild(this.element);
-      this.element.addEventListener('click', el => {
-          if (el.target.className === 'modal') {
-              this.close();
-          }
-      });
       this.modalService.add(this);
-  }
-
-  // remove self from modal service when component is destroyed
-  ngOnDestroy(): void {
-      this.modalService.remove(this.id);
-      this.element.remove();
   }
 
   // open modal
@@ -43,5 +32,9 @@ export class BuyModalComponent implements OnInit, OnDestroy {
   // close modal
   close(): void {
     this.isShown = false;
+  }
+
+  pay(): void {
+    
   }
 }

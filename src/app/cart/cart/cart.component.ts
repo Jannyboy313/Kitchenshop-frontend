@@ -101,7 +101,7 @@ export class CartComponent implements OnInit {
       return;
     }
     console.log("Im clicked checkout")
-    this.modalService.open('1')
+    this.modalService.open('buyModal')
     // this.cartService.setOrders(this.createOrders());
   }
 
