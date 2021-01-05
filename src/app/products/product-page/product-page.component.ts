@@ -23,12 +23,15 @@ export class ProductPageComponent implements OnInit {
 
   getShortenedDescription(description: string) {
     let short = description.split(" ");
-    let shortenedDescription;
+    console.log(short)
+    let shortenedDescription: string = '';
     for (let i=0; i<short.length; i++) {
       if (i <= 25) {
-        shortenedDescription.push(short[i]);
+        console.log("This is the word ", short[i])
+        shortenedDescription += ' ' + short[i]
+      }else {
+        return shortenedDescription.trim();
       }
-      return shortenedDescription;
     }
   }
 
