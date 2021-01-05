@@ -38,6 +38,10 @@ export class BuyModalComponent implements OnInit {
     this.isShown = false;
   }
 
+  getMoneyAmount(): number{
+    return this.cartService.getTotalPrice();
+  }
+
   pay(): void {
     this.cartService.pay()
   }
