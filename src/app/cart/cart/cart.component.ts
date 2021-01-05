@@ -4,7 +4,7 @@ import { Order } from 'src/app/models/order.model';
 import { Product } from 'src/app/models/product.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from '../../services/cart.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,9 +16,11 @@ export class CartComponent implements OnInit {
   filteredItems: Product[] = [];
   amountItems = new Map();
   isBuying = false;
-  modalRef;
 
-  constructor(private cartService: CartService, private authservice: AuthService, private router: Router) { }
+  constructor(private cartService: CartService,
+              private authservice: AuthService,
+              private router: Router,
+              private modalService: ModalService) { }
   ngOnInit(): void {
     this.updateItems();
   }
@@ -98,7 +100,9 @@ export class CartComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
-    this.cartService.setOrders(this.createOrders());
+    console.log("Im clicked checkout")
+    this.modalService.open('1')
+    // this.cartService.setOrders(this.createOrders());
   }
 
   private createOrders() {

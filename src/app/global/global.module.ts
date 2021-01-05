@@ -16,6 +16,7 @@ import { BuyModalComponent } from './buy-modal/buy-modal.component';
   exports: [
     NavigationbarComponent,
     FooterComponent,
+    BuyModalComponent
   ]
 })
 export class GlobalModule { }
