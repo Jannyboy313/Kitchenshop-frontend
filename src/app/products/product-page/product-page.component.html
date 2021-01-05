@@ -1,17 +1,17 @@
 <div class="container-fluid">
-    <div class="card">
+    <div class="card" *ngFor="let product of products">
         <div class="card-body">
-            <h5 class="card-title">Product naam</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <p id="stock">Stock:  10</p>
-            <h6>Price: <strong>&#x20ac;10</strong></h6>
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <p id="stock">Stock:  product.stock</p>
+            <h6>Price: <strong>&#x20ac;product.price</strong></h6>
             <button class="btn btn-outline-primary"
                     (click)="toProductPage()"
                     [disabled]="true">
                 More Info
             </button>
             <button class="btn btn-primary float-right"
-                    (click)="addToCart()">
+                    (click)="addToCart(product)">
               Add to cart
             </button>
         </div>
