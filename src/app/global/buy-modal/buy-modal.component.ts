@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, ElementRef } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
@@ -11,7 +12,10 @@ export class BuyModalComponent implements OnInit {
   private element: any;
   isShown = false;
 
-  constructor(private modalService: ModalService, private el: ElementRef) {
+  constructor(
+    private modalService: ModalService,
+     private el: ElementRef,
+     private cartService: CartService) {
       this.element = this.el.nativeElement;
   }
 
@@ -35,6 +39,6 @@ export class BuyModalComponent implements OnInit {
   }
 
   pay(): void {
-    
+    this.cartService.pay()
   }
 }

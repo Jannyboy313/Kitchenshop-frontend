@@ -73,26 +73,15 @@ export class CartComponent implements OnInit {
   }
 
   getTotalPriceItem(item: Product) {
-    return parseFloat(item.price) * this.getAmount(item);
+    return this.cartService.roundToTwoDecimals(parseFloat(item.price) * this.getAmount(item));
   }
 
   getTotalPrice() {
-    let totalPrice = 0;
-    for (let i=0; i < this.items.length; i++) {
-      totalPrice += parseFloat(this.items[i].price);
-    }
-    return this.roundToTwoDecimals(totalPrice);
+    return this.cartService.getTotalPrice();
   }
 
   getTotalPriceWithoutVat() {
-    let totalPrice = this.getTotalPrice() * 0.79
-    return this.roundToTwoDecimals(totalPrice);
-  }
-
-  roundToTwoDecimals(number) {
-    number = number * 100;
-    number = Math.trunc(number);
-    return number / 100;
+    return this.cartService.getTotalPriceWithoutVat();
   }
 
   checkout() {
@@ -100,7 +89,6 @@ export class CartComponent implements OnInit {
       this.router.navigate(['/login']);
       return;
     }
-    console.log("Im clicked checkout")
     this.modalService.open('buyModal')
     // this.cartService.setOrders(this.createOrders());
   }

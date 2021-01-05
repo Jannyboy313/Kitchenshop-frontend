@@ -77,4 +77,27 @@ export class CartService {
     return this.orders;
   }
 
+  pay() {
+
+  }
+
+  getTotalPrice() {
+    let totalPrice = 0;
+    for (let i=0; i < this.itemsInCart.length; i++) {
+      totalPrice += parseFloat(this.itemsInCart[i].price);
+    }
+    return this.roundToTwoDecimals(totalPrice);
+  }
+
+  getTotalPriceWithoutVat() {
+    let totalPrice = this.getTotalPrice() * 0.79
+    return this.roundToTwoDecimals(totalPrice);
+  }
+
+  roundToTwoDecimals(number) {
+    number = number * 100;
+    number = Math.trunc(number);
+    return number / 100;
+  }
+
 }
