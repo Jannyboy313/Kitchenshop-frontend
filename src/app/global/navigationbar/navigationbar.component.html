@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-md nav-color">
+    <a class="navbar-brand font titleColor" routerLink="/home" href="">Piscines</a>
+
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse font justify-content-between" [ngbCollapse]="isCollapsed">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" routerLink="/home" (click)="isCollapsed = true">Home <span class="sr-only">(current)</span></a>
+
+          <a class="nav-item nav-link"
+          routerLink="/home"
+          (click)="isCollapsed = true">Products</a>
+
+          <a class="nav-item nav-link"
+          routerLink="/home"
+          (click)="isCollapsed = true">About us</a>
+        </div>
+
+        <div class="navbar-nav justify-content-end">
+
+          <a class="nav-item nav-link"
+          routerLink="/home"
+          (click)="isCollapsed = true"
+          *ngIf="isAdmin()">Admin</a>
+
+          <a class="nav-item nav-link"
+          routerLink="/login"
+          (click)="isCollapsed = true"
+          *ngIf="!isLoggedIn()">Login</a>
+
+          <a class="nav-item nav-link"
+          routerLink="/home"
+          (click)="isCollapsed = true && logout()"
+          *ngIf="isLoggedIn()">Logout</a>
+
+          <a class="nav-item nav-link"
+          routerLink="/cart"
+          id="cart"
+          (click)="isCollapsed = true"
+          >
+            <i class="bi bi-cart"></i>
+            <span class="badge badge-pill">{{getTotalItems()}}</span>
+          </a>
+
+        </div>
+    </div>
+
+</nav>

@@ -1,0 +1,28 @@
+.font {
+    font-family: 'Fulbo Argenta';
+}
+
+.footer {
+    width: 100%;
+}
+
+.titleColor {
+    color: #285e86;
+}
+
+p {
+    color: #57697a !important;
+}
+
+li {
+    margin-left: 12px
+}
+
+.footer{
+    background: #f8f9fa;
+}
+
+.links {
+    margin-bottom: 10px;
+    padding-left: 25px;
+}

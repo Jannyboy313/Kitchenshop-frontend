@@ -1,0 +1,45 @@
+.font {
+    font-family: 'Fulbo Argenta';
+}
+
+.titleColor {
+    color: #285e86;
+}
+
+.nav-color {
+    background-color: #F0F0F0;
+}
+
+a {
+    color: #57697a;
+}
+
+a:hover {
+    color: #798d9f;
+
+}
+
+#cart {
+    font-size: 20px;
+    padding: 0 !important;
+    margin-left: 10px;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(87, 105, 122, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.badge-pill {
+    padding-left: .4rem;
+    padding-right: .4rem;
+    background-color: #285e86;
+    color: #F0F0F0;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+@media only screen and (max-width: 768px) {
+    #cart {
+        margin-left: 0;
+    }
+}

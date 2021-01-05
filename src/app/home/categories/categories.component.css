@@ -1,0 +1,23 @@
+h1 {
+    font-size: 28px;
+}
+
+.inside-box {
+    max-width: 75%;
+    padding: 20px;
+    margin: auto;
+}
+
+
+.outside-box {
+    margin: 20px 0 20px 0;
+}
+
+@media only screen and (max-width: 576px) {
+    h1 {
+        font-size: 22px;
+    }
+    p {
+        font-size: 15px;
+    }
+}
