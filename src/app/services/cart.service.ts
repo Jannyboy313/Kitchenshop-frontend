@@ -3,6 +3,7 @@ import { Order } from '../models/order.model';
 import { Product } from '../models/product.model';
 import { environment } from "../../environments/environment";
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -42,9 +43,9 @@ export class CartService {
       "category": "Boeken",
     }),
   ];
-  private orders: Order[];
+  orders: Order[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authservice: AuthService) { }
 
   addItem(item: Product) {
     this.itemsInCart.push(item);
@@ -81,6 +82,7 @@ export class CartService {
   }
 
   pay() {
+    this.createOrders()
     return this.http.post<any>(environment.apiUrl + "/addorders", this.orders);
   }
 
@@ -101,6 +103,12 @@ export class CartService {
     number = number * 100;
     number = Math.trunc(number);
     return number / 100;
+  }
+
+  private createOrders() {
+    this.itemsInCart.forEach((item) => {
+      this.orders.push(new Order().deserialize({"user_id": this.authservice.getUser().user_id, "productnumber": item.productnumber}))
+    })
   }
 
 }

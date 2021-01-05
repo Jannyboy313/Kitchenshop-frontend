@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Order } from 'src/app/models/order.model';
 import { Product } from 'src/app/models/product.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from '../../services/cart.service';
@@ -90,14 +89,5 @@ export class CartComponent implements OnInit {
       return;
     }
     this.modalService.open('buyModal')
-    // this.cartService.setOrders(this.createOrders());
-  }
-
-  private createOrders() {
-    let orders: Order[];
-    this.items.forEach((item) => {
-      orders.push(new Order().deserialize({"user_id": this.authservice.getUser().user_id, "productnumber": item.productnumber}))
-    })
-    return orders;
   }
 }
