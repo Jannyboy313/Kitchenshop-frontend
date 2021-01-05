@@ -12,12 +12,13 @@ export class ProductPageComponent implements OnInit {
   products: Product[] = []
   constructor(private productsService: ProductsService, private cartService: CartService) { }
 
+
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe(products => this.products = products);
+    this.getProducts();
   }
 
-  toProductPage() {
-
+  private getProducts() {
+    this.productsService.getProducts().subscribe(products => this.products = products);
   }
 
   addToCart(product: Product) {

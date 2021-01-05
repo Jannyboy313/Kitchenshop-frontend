@@ -13,7 +13,7 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   public getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.apiUrl}/products`).pipe(
-    map(data => data.map(data => new Product().deserialize(data))));
+    return this.http.get<Product[]>(`${environment.apiUrl}/products`)
+    .pipe(map(data => data.map(data => new Product().deserialize(data))));
   }
 }
