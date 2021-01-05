@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Order } from 'src/app/models/order.model';
 import { Product } from 'src/app/models/product.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { parse } from 'url';
 import { CartService } from '../../services/cart.service';
 
 @Component({
@@ -15,6 +14,7 @@ export class CartComponent implements OnInit {
   items: Product[] = [];
   filteredItems: Product[] = [];
   amountItems = new Map();
+  isBuying = false;
 
   constructor(private cartService: CartService, private authservice: AuthService, private router: Router) { }
 
@@ -94,14 +94,18 @@ export class CartComponent implements OnInit {
 
   checkout() {
     if (!this.authservice.isLoggedIn()) {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
+      return;
     }
+    this.cartService.setOrders(this.createOrders());
+    this.isBuying = true;
   }
 
-  createOrders() {
+  private createOrders() {
     let orders: Order[];
     this.items.forEach((item) => {
       orders.push(new Order().deserialize({"user_id": this.authservice.getUser().user_id, "productnumber": item.productnumber}))
     })
+    return orders;
   }
 }
