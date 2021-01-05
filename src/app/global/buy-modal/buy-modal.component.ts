@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ElementRef } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { Router } from '@angular/router';
@@ -54,8 +54,8 @@ export class BuyModalComponent implements OnInit {
           // TODO Change to orders page
           this.close();
           this.cartService.clearCart();
-          this.router.navigate(['/home']);
           this.isLoading = false;
+          // this.router.navigate(['/home']);
       },
       error: () => {
           this.isError = true;
