@@ -45,5 +45,6 @@ export class ProductInfoModalComponent implements OnInit, OnDestroy {
 
   addToCart(): void{
     this.cartService.addItem(this.product);
+    this.close();
   }
 }
