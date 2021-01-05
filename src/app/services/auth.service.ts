@@ -2,6 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from "../../environments/environment";
+import { User } from '../models/user.model';
+
+import { PreviousRouteService } from './previous-route.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,45 +12,37 @@ import { environment } from "../../environments/environment";
 export class AuthService {
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
-  private user: string;
-  private role: string;
+  private user: User = null;
 
-  constructor(private http: HttpClient, private router: Router,) {}
+  constructor(private http: HttpClient, private router: Router, private previousRouteService: PreviousRouteService) {}
 
-  login({ email, password }) : boolean {
-    let isSuccess: boolean;
-    this.http.post<any>(environment.apiUrl + "/login",
-    {"email": email, "password": password})
-      .subscribe(
-        (value) => {
-          this.loginUser(email, value.role, value.token);
-          this.router.navigate(['/home']);
-          if (this.getUser().role === 'admin'){
-            this.router.navigate(['/home']);
-          }
-          isSuccess = true;
-        },
-        response => {
-          console.log("errr", response);
-          isSuccess = false;
-        }
-      );
-      return isSuccess
+  postLogin({ email, password }) {
+    return this.http.post<any>(environment.apiUrl + "/login",
+    {"email": email, "password": password});
   }
 
+  loginUser(user: User, jwt: string) {
+    console.log("This is the user: ", user);
+    this.user = user;
+    this.storeJwtToken(jwt);
+    this.routeUser();
+  }
 
-  getUser() {
-    return {"username": this.user, "role": this.role};
+  getUser(): User {
+    return this.user;
   }
 
   isAdmin() {
-    if (this.role === 'admin')
+    if (!this.user) {
+      return false;
+    }else if (this.user.role === 'admin') {
       return true;
+    }
+    return false;
   }
 
   logout() {
     this.user = null;
-    this.role = null;
     localStorage.removeItem(this.JWT_TOKEN);
   }
 
@@ -59,14 +54,27 @@ export class AuthService {
     return localStorage.getItem(this.JWT_TOKEN);
   }
 
-  private loginUser(username: string, role: string, jwt: string) {
-    this.user = username;
-    this.role = role;
-    this.storeJwtToken(jwt);
-  }
-
   private storeJwtToken(jwt: string) {
     localStorage.setItem(this.JWT_TOKEN, jwt);
+  }
+
+  private routeUser() {
+    if (this.getUser().role === 'admin'){
+      this.router.navigate(['/home']); // TODO Change to admin route
+    } else if(this.isAtCheckout()) {
+      this.router.navigate(['/cart']);
+    } else {
+      this.router.navigate(['/home']);
+    }
+  }
+
+  private isAtCheckout() {
+    if(
+      this.previousRouteService.getHistoryUrl(1) === '/cart' ||
+      this.previousRouteService.getHistoryUrl(3) === '/cart' &&
+      this.previousRouteService.getHistoryUrl(1) === '/register'
+      )
+      return true;
   }
 
 }

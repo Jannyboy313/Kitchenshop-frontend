@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navigationbar',
@@ -9,7 +10,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavigationbarComponent implements OnInit {
   isCollapsed = true;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private cartService: CartService) { }
 
   ngOnInit(): void {
   }
@@ -25,6 +26,10 @@ export class NavigationbarComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/home']);
+  }
+
+  getTotalItems() {
+    return this.cartService.getTotalLength();
   }
 
 }

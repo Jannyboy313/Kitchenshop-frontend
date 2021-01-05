@@ -2,6 +2,10 @@
     font-family: 'Fulbo Argenta';
 }
 
+.footer {
+    width: 100%;
+}
+
 .titleColor {
     color: #285e86;
 }

@@ -1,0 +1,54 @@
+<main class="row">
+    <div class="col-xs-7 col-md-8 col-sm-8 col-lg-8" id="itemColumn">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Items</h3>
+            </div>
+            <div class="card-body" *ngFor="let item of filteredItems">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.description}}</p>
+                <div id="productAdjust" class="float-right card">
+                    <button class="btn" (click)="removeItem(item)">
+                        <i class="bi bi-dash"></i>
+                    </button>
+                    <p id="amount">{{getAmount(item)}}</p>
+                    <button class="btn" (click)="addItem(item)">
+                        <i class="bi bi-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-5 col-md-4 col-sm-4 col-lg-4 styling" id="cartColumn">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Total</h3>
+            </div>
+            <div class="card-body" *ngFor="let item of filteredItems">
+                <h5 class="card-title">{{item.name}}</h5>
+                <div class="card-text">Amount: {{getAmount(item)}}</div>
+                <div class="card-text">
+                    totalprice: {{getAmount(item)}}
+                    <i class="bi bi-asterisk multiply-icon"></i>
+                    &#x20ac;{{item.price}}
+                    <div class="totalAmountItem">&#x20ac;{{getTotalPriceItem(item)}}</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Grand total</h5>
+                <div class="card-text">VAT: 21%</div>
+                <div class="card-text">
+                    Price without VAT: &#x20ac;{{getTotalPriceWithoutVat()}}
+                </div>
+                <div class="card-text">
+                    Total price: &#x20ac;{{getTotalPrice()}}
+                </div>
+                <button class="btn btn-primary float-right"
+                (click)="checkout()"
+                >Checkout</button>
+            </div>
+        </div>
+    </div>
+    <app-buy-modal id="buyModal"></app-buy-modal>
+</main>

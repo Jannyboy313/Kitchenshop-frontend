@@ -2,8 +2,8 @@
     <div class="container vertical-center">
         <form class="container-fluid" #form="ngForm" (ngSubmit)="onSubmit(form)">
             <header>Piscine</header>
-            <div class="alert-danger rounded" *ngIf="isError">
-                <p>Email or password incorrect</p>
+            <div *ngIf="isError" class="alert alert-danger">
+                Email or Password is incorrect
             </div>
             <div class="row-cols-1 form-inside">
                 <div class="input-field">
@@ -42,8 +42,9 @@
             <button
                 type="submit"
                 class="btn float-right"
-                [disabled]="!form.valid"
+                [disabled]="isLoading"
             >
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
                 Log In
             </button>
             <button
