@@ -7,7 +7,7 @@ import { RegisterComponent } from './login/register/register.component';
 import { ProductPageComponent } from './products/product-page/product-page.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
