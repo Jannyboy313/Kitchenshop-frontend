@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Order } from '../models/order.model';
 import { Product } from '../models/product.model';
 
 @Injectable({
@@ -39,6 +40,7 @@ export class CartService {
       "category": "Boeken",
     }),
   ];
+  private orders: Order[];
 
   constructor() { }
 
@@ -65,6 +67,14 @@ export class CartService {
 
   clearCart() {
     this.itemsInCart = [];
+  }
+
+  setOrders(orders) {
+    this.orders = orders;
+  }
+
+  getOrders() {
+    return this.orders;
   }
 
 }
