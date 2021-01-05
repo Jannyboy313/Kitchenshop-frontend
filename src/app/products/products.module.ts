@@ -7,6 +7,9 @@ import { ProductInfoModalComponent } from './product-info-modal/product-info-mod
   declarations: [ProductPageComponent, ProductInfoModalComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ProductInfoModalComponent
   ]
 })
 export class ProductsModule { }
