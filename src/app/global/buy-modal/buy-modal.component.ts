@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './buy-modal.component.html',
   styleUrls: ['./buy-modal.component.css']
 })
-export class BuyModalComponent implements OnInit {
+export class BuyModalComponent implements OnInit, OnDestroy {
   @Input() id: string;
   private element: any;
   isShown = false;
@@ -32,6 +32,11 @@ export class BuyModalComponent implements OnInit {
       this.modalService.add(this);
   }
 
+  ngOnDestroy(): void {
+    this.modalService.remove(this.id);
+    this.element.remove();
+  }
+
   // open modal
   open(): void {
     this.isShown = true;
@@ -52,10 +57,8 @@ export class BuyModalComponent implements OnInit {
     .subscribe({
       next: () => {
           // TODO Change to orders page
-          this.close();
           this.cartService.clearCart();
-          this.isLoading = false;
-          // this.router.navigate(['/home']);
+          this.router.navigate(['/home']);
       },
       error: () => {
           this.isError = true;
