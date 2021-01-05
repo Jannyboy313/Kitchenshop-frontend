@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md nav-color">
-    <a class="navbar-brand font titleColor" routerLink="/home" href="">Piscines</a>
+    <a class="navbar-brand font titleColor" routerLink="/home">Piscines</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
       <span class="navbar-toggler-icon"></span>
@@ -10,7 +10,7 @@
           <a class="nav-item nav-link" routerLink="/home" (click)="isCollapsed = true">Home <span class="sr-only">(current)</span></a>
 
           <a class="nav-item nav-link"
-          routerLink="/home"
+          routerLink="/products"
           (click)="isCollapsed = true">Products</a>
 
           <a class="nav-item nav-link"
