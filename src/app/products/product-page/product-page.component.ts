@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from '../../services/products.service';
 import { CartService } from '../../services/cart.service';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-product-page',
@@ -10,7 +11,9 @@ import { CartService } from '../../services/cart.service';
 })
 export class ProductPageComponent implements OnInit {
   products: Product[] = []
-  constructor(private productsService: ProductsService, private cartService: CartService) { }
+  constructor(private productsService: ProductsService,
+              private cartService: CartService,
+              private modalService: ModalService) { }
 
 
   ngOnInit(): void {
@@ -33,6 +36,10 @@ export class ProductPageComponent implements OnInit {
         return shortenedDescription.trim();
       }
     }
+  }
+
+  openInfoModal(product: Product) {
+    this.modalService.open(product.name);
   }
 
   addToCart(product: Product) {
