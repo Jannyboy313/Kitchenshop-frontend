@@ -8,6 +8,9 @@ import { BuyModelComponent } from './buy-model/buy-model.component';
   declarations: [CartComponent, BuyModelComponent],
   imports: [
     CommonModule
+  ],
+  exports: [
+    BuyModelComponent
   ]
 })
 export class CartModule { }
