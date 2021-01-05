@@ -1,5 +1,5 @@
 main {
-    width: 100%;
+    margin: 0;
 }
 
 #itemColumn {
@@ -11,7 +11,7 @@ main {
 #cartColumn {
     padding: 10px 10px 10px 10px;
     margin-left: 20px;
-    max-width: 60%;
+    max-width: 100%;
 }
 
 #amount {
