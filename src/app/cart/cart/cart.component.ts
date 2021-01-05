@@ -104,5 +104,4 @@ export class CartComponent implements OnInit {
       orders.push(new Order().deserialize({"user_id": this.authservice.getUser().user_id, "productnumber": item.productnumber}))
     })
   }
-  
 }
