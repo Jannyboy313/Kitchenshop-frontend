@@ -22,8 +22,8 @@ export class ProductInfoModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-      if (!this.id) {
-          console.error('modal must have an id');
+      if (!this.id && !this.product) {
+          console.error('modal must have an id and product');
           return;
       }
       document.body.appendChild(this.element);
