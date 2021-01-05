@@ -3,7 +3,7 @@
         <div class="card col" *ngFor="let product of products;">
             <div class="card-body">
                 <h5 class="card-title">{{product.name}}</h5>
-                <p class="card-text">{{product.description}}</p>
+                <p class="card-text">{{getShortenedDescription(product.description)}}...</p>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><p id="stock">Stock:  {{product.stock}}</p></li>
                     <li class="list-group-item"><h6>Price: <strong>&#x20ac;{{product.price}}</strong></h6></li>

@@ -21,6 +21,17 @@ export class ProductPageComponent implements OnInit {
     this.productsService.getProducts().subscribe(products => this.products = products);
   }
 
+  getShortenedDescription(description: string) {
+    let short = description.split(" ");
+    let shortenedDescription;
+    for (let i=0; i<short.length; i++) {
+      if (i <= 25) {
+        shortenedDescription.push(short[i]);
+      }
+      return shortenedDescription;
+    }
+  }
+
   addToCart(product: Product) {
     this.cartService.addItem(product);
   }
