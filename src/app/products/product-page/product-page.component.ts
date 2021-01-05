@@ -43,4 +43,10 @@ export class ProductPageComponent implements OnInit {
   addToCart(product: Product) {
     this.cartService.addItem(product);
   }
+
+  getStock(stock) {
+    if (stock <= 0) {
+      stock = "This item is not in stock anymore"
+    }
+  }
 }
