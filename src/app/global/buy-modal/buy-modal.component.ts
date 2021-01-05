@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, ElementRef } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { ModalService } from 'src/app/services/modal.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buy-modal',
@@ -11,11 +12,14 @@ export class BuyModalComponent implements OnInit {
   @Input() id: string;
   private element: any;
   isShown = false;
+  isLoading = false;
+  isError = false;
 
   constructor(
     private modalService: ModalService,
      private el: ElementRef,
-     private cartService: CartService) {
+     private cartService: CartService,
+     private router: Router) {
       this.element = this.el.nativeElement;
   }
 
@@ -43,6 +47,20 @@ export class BuyModalComponent implements OnInit {
   }
 
   pay(): void {
+    this.isLoading = true;
     this.cartService.pay()
+    .subscribe({
+      next: () => {
+          // TODO Change to orders page
+          this.close();
+          this.cartService.clearCart();
+          this.router.navigate(['/home']);
+          this.isLoading = false;
+      },
+      error: () => {
+          this.isError = true;
+          this.isLoading = false;
+      }
+    });
   }
 }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../models/order.model';
 import { Product } from '../models/product.model';
+import { environment } from "../../environments/environment";
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -42,7 +44,7 @@ export class CartService {
   ];
   private orders: Order[];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   addItem(item: Product) {
     this.itemsInCart.push(item);
@@ -78,7 +80,7 @@ export class CartService {
   }
 
   pay() {
-
+    return this.http.post<any>(environment.apiUrl + "/addorders", this.orders);
   }
 
   getTotalPrice() {

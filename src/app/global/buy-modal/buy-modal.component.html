@@ -10,11 +10,17 @@
             </div>
 
             <div class="modal-body">
-                The money amount is {{getMoneyAmount()}}
+                <div *ngIf="isError" class="alert alert-danger">Payment did not succeed try again</div>
+                The money amount is: &#x20ac;{{getMoneyAmount()}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary mr-auto" (click)="close()">Cancel</button>
-                <button type="button" class="btn btn-success" (click)="pay()">Pay</button>
+                <button type="button" class="btn btn-success"
+                        (click)="pay()"
+                        [disabled]="isLoading">
+                    <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Pay
+                </button>
             </div>
         </div>
     </div>
