@@ -1,12 +1,11 @@
 <div class="container-fluid">
-    <div class="card" *ngFor="let product of products">
+    <div class="card" *ngFor="let product of products;">
         <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
             <p class="card-text">{{product.description}}</p>
             <p id="stock">Stock:  product.stock</p>
             <h6>Price: <strong>&#x20ac;product.price</strong></h6>
             <button class="btn btn-outline-primary"
-                    (click)="toProductPage()"
                     [disabled]="true">
                 More Info
             </button>
