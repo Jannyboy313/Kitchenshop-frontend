@@ -18,9 +18,7 @@ export class UserOrdersComponent implements OnInit {
 
   getCustomerOrders() {
     this.orderService.getCustomerOrders()
-      .subscribe(
-        data => console.log("This is the received data ", data)
-      )
+      .subscribe(orders => this.orders = orders)
   }
 
 }
