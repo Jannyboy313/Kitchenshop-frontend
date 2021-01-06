@@ -18,8 +18,11 @@ export class OrderService {
   }
 
   getCustomerOrders() {
+    // return this.http
+    // .get<Order[]>(`${environment.apiUrl}/customerorders?user_id=${this.authService.getUser().user_id}`).pipe(
+    // map(data => data.map(data => new Order().deserialize(data))));
     return this.http
-    .get<Order[]>(`${environment.apiUrl}/customerorders?user_id=${this.authService.getUser().user_id}`).pipe(
+    .get<Order[]>(`${environment.apiUrl}/customerorders?user_id=1`).pipe(
     map(data => data.map(data => new Order().deserialize(data))));
   }
 }
