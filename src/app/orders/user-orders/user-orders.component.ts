@@ -13,6 +13,7 @@ export class UserOrdersComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
+    this.getCustomerOrders();
   }
 
   getCustomerOrders() {
