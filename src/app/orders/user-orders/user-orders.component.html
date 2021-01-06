@@ -1,11 +1,13 @@
 <div class="container-fluid body">
     <div class="row" >
-        <div *ngFor="let order of orders; let i = index" class="outside-box">
-            <div class="col border rounded inside-box">
-                <h1>Productnaam</h1>
-                <p>Hoevaak gekocht</p>
-                <p>Wat heb ie betaald</p>
-                <p>Wanneer</p>
+        <div *ngFor="let order of orders; let i = index" class="card">
+            <div class="col card-body">
+                <div class="card-title">Id: {{order.orders_id}} Product: {{order.name}}</div>
+                <div class="card-text">
+                    <p>Amount: </p>
+                    <p>Payed: {{order.price}}</p>
+                    <p>Date bought: {{order.timestamp}}</p>
+                </div>
             </div>
         </div>
     </div>
