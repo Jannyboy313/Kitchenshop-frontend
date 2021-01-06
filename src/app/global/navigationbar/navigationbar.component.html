@@ -28,7 +28,7 @@
           <a class="nav-item nav-link"
           routerLink="/customerorders"
           (click)="isCollapsed = true"
-          *ngIf="!isAdmin()">Account</a>
+          *ngIf="!isAdmin() && isLoggedIn()">Account</a>
 
           <a class="nav-item nav-link"
           routerLink="/login"
