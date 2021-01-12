@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from '../../services/products.service';
+import { Image } from '../../models/image.model';
 
 @Component({
   selector: 'app-product-create',
@@ -48,7 +49,8 @@ export class ProductCreateComponent implements OnInit {
     }
     this.isLoading = true;
     const product = this.createProduct();
-    this.productsService.addProduct(product)
+    const image = this.createImage();
+    this.productsService.addProduct(product, image)
     .subscribe({
       next: () => {
           this.router.navigate(['/products']);
@@ -70,6 +72,6 @@ export class ProductCreateComponent implements OnInit {
   }
 
   private createImage(): Image {
-    return new 
+    return new Image().deserialize(this.createProductForm.value)
   }
 }
