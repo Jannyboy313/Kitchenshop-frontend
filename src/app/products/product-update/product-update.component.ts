@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from '../../services/products.service';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-product-update',
@@ -9,7 +10,7 @@ import { ProductsService } from '../../services/products.service';
 })
 export class ProductUpdateComponent implements OnInit {
   products: Product[] = []
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -21,6 +22,10 @@ export class ProductUpdateComponent implements OnInit {
 
   updateButton(product) {
 
+  }
+
+  openInfoModal(product: Product) {
+    this.modalService.open(product.name);
   }
 
   private getProducts() {

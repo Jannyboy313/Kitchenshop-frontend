@@ -5,9 +5,10 @@ import { ProductInfoModalComponent } from './product-info-modal/product-info-mod
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductUpdateComponent } from './product-update/product-update.component';
+import { ModalUpdateComponent } from './modal-update/modal-update.component';
 
 @NgModule({
-  declarations: [ProductPageComponent, ProductInfoModalComponent, ProductCreateComponent, ProductUpdateComponent],
+  declarations: [ProductPageComponent, ProductInfoModalComponent, ProductCreateComponent, ProductUpdateComponent, ModalUpdateComponent],
   imports: [
     CommonModule,
     FormsModule,
