@@ -31,4 +31,9 @@ export class OrderService {
     .get<Order[]>(`${environment.apiUrl}/adminorders`).pipe(
     map(data => data.map(data => new Order().deserialize(data))));
   }
+
+  deleteOrder(id) {
+    return this.http
+    .delete(`${environment.apiUrl}/deleteorder?orders_id=${id}`);
+  }
 }
