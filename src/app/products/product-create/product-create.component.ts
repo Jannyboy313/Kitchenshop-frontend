@@ -48,8 +48,7 @@ export class ProductCreateComponent implements OnInit {
     }
     this.isLoading = true;
     const product = this.createProduct();
-    const image = this.createImage();
-    this.productsService.addProduct(product, image)
+    this.productsService.addProduct(product)
     .subscribe({
       next: () => {
           this.router.navigate(['/products']);
@@ -68,9 +67,5 @@ export class ProductCreateComponent implements OnInit {
 
   private createProduct(): Product {
     return new Product().deserialize(this.createProductForm.value);
-  }
-
-  private createImage(): Image {
-    return new Image().deserialize(this.createProductForm.value)
   }
 }

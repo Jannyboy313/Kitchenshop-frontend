@@ -18,7 +18,7 @@ export class ProductsService {
     .pipe(map(data => data.map(data => new Product().deserialize(data))));
   }
 
-  addProduct(product: Product, image: Image) : any {
-    return this.http.post<any>(environment.apiUrl + "/addproduct", {"product": product, "image": image});
+  addProduct(product: Product) : any {
+    return this.http.post<any>(environment.apiUrl + "/addproduct", {"product": product});
   }
 }
