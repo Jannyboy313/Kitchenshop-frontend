@@ -19,29 +19,28 @@
         </div>
 
         <div class="navbar-nav justify-content-end">
-          <div class="dropdown">
+          <div ngbDropdown  class="d-inline-block" *ngIf="isAdmin()">
             <a
-            class="nav-item nav-link dropdown-toggle"
-            href="#"
-            id="dropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false"
-            *ngIf="isAdmin()">Admin</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              class="nav-item nav-link dropdown-toggle"
+              id="dropdownMenuLink"
+              ngbDropdownToggle>
+              Admin
+            </a>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenuLink">
               <a
-                class="dropdown-item"
+                ngbDropdownItem
                 routerLink="/adminorders"
                 (click)="isCollapsed = true">
                 Orders
               </a>
               <a
-                class="dropdown-item"
-                routerLink="/adminorders"
+                ngbDropdownItem
+                routerLink="/customerorders"
                 (click)="isCollapsed = true">
                 Add Product
               </a>
               <a
-                class="dropdown-item"
+                ngbDropdownItem
                 routerLink="/adminorders"
                 (click)="isCollapsed = true">
                 Users
