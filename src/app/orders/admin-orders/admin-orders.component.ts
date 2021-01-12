@@ -31,7 +31,8 @@ export class AdminOrdersComponent implements OnInit {
         } else {
           this.orders.get(key)[i].amount--;
         }
-        this.orderService.deleteOrder(order.orders_id);
+        this.orderService.deleteOrder(order.orders_id)
+          .subscribe(() => {});
         break;
       }
     }
