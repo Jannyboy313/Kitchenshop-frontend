@@ -12,10 +12,10 @@ export class AdminOrdersComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.getCustomerOrders();
+    this.getAdminOrders();
   }
 
-  getCustomerOrders() {
+  getAdminOrders() {
     this.orderService.getAdminOrders()
       .subscribe(orders => {
         this.orders = this.ordersByDate(orders);
