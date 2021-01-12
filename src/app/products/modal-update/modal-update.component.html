@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="container-fluid" [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+            <form class="container-fluid" [formGroup]="createProductForm">
                 <div *ngIf="isError" class="alert alert-danger">
                     {{errorMessage}}
                 </div>

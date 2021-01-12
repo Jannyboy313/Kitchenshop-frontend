@@ -11,6 +11,7 @@ import { Product } from 'src/app/models/product.model';
 })
 export class ModalUpdateComponent implements OnInit, OnDestroy {
   @Input() id: string;
+  @Input() product: Product;
   private element: any;
   isShown = false;
   isLoading = false;
@@ -47,6 +48,11 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
       stock: ['', [Validators.required,
         Validators.pattern(/[0-9]/)]]
     });
+  }
+
+    // data erin zetten met formgroup
+  addValue():any {
+    this.createProductForm.setValue
   }
 
   isInValidInput(fieldName): boolean {
