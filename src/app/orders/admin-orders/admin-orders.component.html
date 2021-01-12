@@ -6,7 +6,7 @@
             </div>
             <div *ngFor="let order of timestamp.value" class="card">
                 <div class="col card-body">
-                    <button class="float-right">Testing</button>
+                    <button class="float-right btn btn-danger" (click)="deleteProduct()">Delete</button>
                     <h5 class="card-title">Product: {{order.name}}</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><p class="list-text">Amount: {{order.amount}}</p></li>

@@ -23,6 +23,10 @@ export class AdminOrdersComponent implements OnInit {
       });
   }
 
+  deleteProduct() {
+    
+  }
+
   private ordersByDate(orders) {
     let sortedOrders = new Map<string, Order[]>();
     for (let i=0; i < orders.length; i++) {
