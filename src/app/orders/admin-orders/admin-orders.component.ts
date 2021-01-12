@@ -16,7 +16,7 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   getCustomerOrders() {
-    this.orderService.getCustomerOrders()
+    this.orderService.getAdminOrders()
       .subscribe(orders => {
         this.orders = this.ordersByDate(orders);
         this.ordersByAmount();
