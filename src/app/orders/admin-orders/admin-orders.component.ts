@@ -23,8 +23,18 @@ export class AdminOrdersComponent implements OnInit {
       });
   }
 
-  deleteProduct() {
-    
+  deleteProduct(key, order) {
+    for(let i=0; i < this.orders.get(key).length; i++) {
+      if (this.orders.get(key)[i] === order) {
+        if (order.amount === 1) {
+          this.orders.get(key).splice(i, 1);
+        } else {
+          this.orders.get(key)[i].amount--;
+        }
+        this.orderService.deleteOrder(order.orders_id);
+        break;
+      }
+    }
   }
 
   private ordersByDate(orders) {
