@@ -50,6 +50,13 @@ input {
     border-radius: 15px;
 }
 
+textarea {
+    padding: 8px 15px;
+    font-size: 1em;
+    border: 1px solid #87746e;
+    border-radius: 15px;
+}
+
 .item {
     max-width: 65%;
     margin: auto;
