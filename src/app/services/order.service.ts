@@ -25,4 +25,10 @@ export class OrderService {
     .get<Order[]>(`${environment.apiUrl}/customerorders?user_id=1`).pipe(
     map(data => data.map(data => new Order().deserialize(data))));
   }
+
+  getAdminOrders() {
+    return this.http
+    .get<Order[]>(`${environment.apiUrl}/adminorders`).pipe(
+    map(data => data.map(data => new Order().deserialize(data))));
+  }
 }
