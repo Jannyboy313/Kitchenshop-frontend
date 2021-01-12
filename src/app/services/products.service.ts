@@ -12,8 +12,12 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  public getProducts(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${environment.apiUrl}/products`)
     .pipe(map(data => data.map(data => new Product().deserialize(data))));
+  }
+
+  addProduct(product: Product) : any {
+    return this.http.post<any>(environment.apiUrl + "/addproduct", product);
   }
 }
