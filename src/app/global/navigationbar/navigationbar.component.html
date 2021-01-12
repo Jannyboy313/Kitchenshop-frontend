@@ -19,11 +19,35 @@
         </div>
 
         <div class="navbar-nav justify-content-end">
-
-          <a class="nav-item nav-link"
-          routerLink="/home"
-          (click)="isCollapsed = true"
-          *ngIf="isAdmin()">Admin</a>
+          <div class="dropdown">
+            <a
+            class="nav-item nav-link dropdown-toggle"
+            href="#"
+            id="dropdownMenuLink"
+            data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"
+            *ngIf="isAdmin()">Admin</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a
+                class="dropdown-item"
+                routerLink="/adminorders"
+                (click)="isCollapsed = true">
+                Orders
+              </a>
+              <a
+                class="dropdown-item"
+                routerLink="/adminorders"
+                (click)="isCollapsed = true">
+                Add Product
+              </a>
+              <a
+                class="dropdown-item"
+                routerLink="/adminorders"
+                (click)="isCollapsed = true">
+                Users
+              </a>
+            </div>
+          </div>
 
           <a class="nav-item nav-link"
           routerLink="/customerorders"
