@@ -10,6 +10,7 @@ export class Order implements Deserializable {
   stock: string = null;
   price: string = null;
   category: string = null;
+  amount: number = null;
 
   deserialize(input: any) {
     Object.assign(this, input);
