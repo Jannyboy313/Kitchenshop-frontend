@@ -9,6 +9,11 @@
     margin: 20px auto 20px auto;
 }
 
+.card-header {
+    font-size: medium;
+    font-weight: bold;
+}
+
 .list-group-item {
     padding: 0;
     border: 0;

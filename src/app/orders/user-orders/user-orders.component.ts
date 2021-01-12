@@ -27,9 +27,9 @@ export class UserOrdersComponent implements OnInit {
     let sortedOrders = new Map<string, Order[]>();
     for (let i=0; i < orders.length; i++) {
       if (!sortedOrders.has(orders[i].timestamp)) {
-        sortedOrders.set(orders[i].timestamp, [])
+        sortedOrders.set(String(orders[i].timestamp), [])
       }
-      sortedOrders.get(orders[i].timestamp).push(orders[i]);
+      sortedOrders.get(String(orders[i].timestamp)).push(orders[i]);
     }
     return sortedOrders;
   }
