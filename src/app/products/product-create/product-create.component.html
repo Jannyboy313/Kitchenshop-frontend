@@ -1,1 +1,126 @@
-<p>product-create works!</p>
+<div>
+    <div class="container vertical-center">
+        <form class="container-fluid" [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+            <header>Create Product</header>
+            <div *ngIf="isError" class="alert alert-danger">
+                {{errorMessage}}
+            </div>
+            <div class="form-group col item">
+                <label>
+                    Product name
+                </label>
+                <input
+                    type="text"
+                    placeholder="Fill in product name"
+                    formControlName="productname"
+                    required
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': isInValidInput('productname') || isError }"
+                >
+                <div *ngIf="isInValidInput('productname')">
+                    <div *ngIf="createProductForm.controls['productname'].errors.required" class="invalid-feedback d-block">
+                        Product name is required
+                    </div>
+                    <div *ngIf="createProductForm.controls['productname'].errors.pattern" class="invalid-feedback d-block">
+                        Product name must be a valid name
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col item">
+                <label>
+                    Description
+                </label>
+                <textarea
+
+                ></textarea>
+                <div *ngIf="isInValidInput('description')">
+                    <div *ngIf="createProductForm.controls['description'].errors.pattern" class="invalid-feedback d-block">
+                        Description must be a valid
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col item">
+                <label >
+                    Price
+                </label>
+                <input
+                    type="text"
+                    placeholder="Fill in the price"
+                    formControlName="price"
+                    required
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': isInValidInput('price')  || isError}"
+                >
+                <div *ngIf="isInValidInput('price')">
+                    <div *ngIf="createProductForm.controls['price'].errors.required" class="invalid-feedback d-block">
+                        Price is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group col item">
+                <label>
+                    Stock
+                </label>
+                <input
+                    type="text"
+                    placeholder="Fill in stock"
+                    formControlName="stock"
+                    required
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': isInValidInput('stock')  || isError}"
+                >
+                <div *ngIf="isInValidInput('stock')">
+                    <div *ngIf="createProductForm.controls['stock'].errors.required" class="invalid-feedback d-block">
+                        Stock is required
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group col item">
+                <label>
+                    Category
+                </label>
+                <input
+                    type="text"
+                    placeholder="Fill in category"
+                    formControlName="category"
+                    required
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': isInValidInput('category')  || isError}"
+                >
+                <div *ngIf="isInValidInput('category')">
+                    <div *ngIf="createProductForm.controls['category'].errors.required" class="invalid-feedback d-block">
+                        Category is required
+                    </div>
+                </div>
+            </div>
+            <button
+                type="button"
+                class="btn float-left cancel"
+                (click)="goToProducts()"
+                >
+                go to products
+            </button>
+            <button
+                type="button"
+                class="btn float-left cancel"
+                (click)="reset()"
+                >
+                reset
+            </button>
+            <button
+                type="submit"
+                class="btn float-right"
+                [disabled]="isLoading"
+            >
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+                Add
+            </button>
+        </form>
+    </div>
+</div>
