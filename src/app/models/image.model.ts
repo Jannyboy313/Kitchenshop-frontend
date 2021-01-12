@@ -1,6 +1,6 @@
 import { Deserializable } from "./deserializable.model";
 
-export class Model implements Deserializable {
+export class Image implements Deserializable {
   image: string = null;
   description: string = null;
 

@@ -68,4 +68,8 @@ export class ProductCreateComponent implements OnInit {
   private createProduct(): Product {
     return new Product().deserialize(this.createProductForm.value);
   }
+
+  private createImage(): Image {
+    return new 
+  }
 }
