@@ -1,0 +1,20 @@
+<div class="container-fluid body">
+    <div class="row" >
+        <div class="card" *ngFor="let timestamp of orders | keyvalue">
+            <div class="card-header">
+                {{timestamp.key}}
+            </div>
+            <div *ngFor="let order of timestamp.value" class="card">
+                <div class="col card-body">
+                    <button class="float-right btn btn-danger" (click)="deleteProduct(timestamp.key, order)">Delete</button>
+                    <h5 class="card-title">Product: {{order.name}}</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><p class="list-text">Amount: {{order.amount}}</p></li>
+                        <li class="list-group-item"><h6 class="list-text">Payed: <strong>&#x20ac;{{order.price}}</strong></h6></li>
+                        <li class="list-group-item"><p class="list-text">Date bought: {{order.timestamp}}</p></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
