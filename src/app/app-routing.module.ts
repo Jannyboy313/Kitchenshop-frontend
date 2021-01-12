@@ -6,15 +6,17 @@ import { LoginComponent } from './login/login/login.component';
 import { RegisterComponent } from './login/register/register.component';
 import { ProductPageComponent } from './products/product-page/product-page.component'
 import { UserOrdersComponent } from './orders/user-orders/user-orders.component';
+import { AdminOrdersComponent } from './orders/admin-orders/admin-orders.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/customerorders', pathMatch: 'full' },
+  { path: '', redirectTo: '/adminorders', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'cart', component: CartComponent },
   { path: 'products', component: ProductPageComponent},
-  { path: 'customerorders', component: UserOrdersComponent}
+  { path: 'customerorders', component: UserOrdersComponent},
+  { path: 'adminorders', component: AdminOrdersComponent}
 ];
 
 @NgModule({
