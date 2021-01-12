@@ -33,6 +33,7 @@
                 </label>
                 <textarea
                     class="form-control"
+                    [ngClass]="{ 'is-invalid': isInValidInput('description') || isError }"
                 ></textarea>
                 <div *ngIf="isInValidInput('description')">
                     <div *ngIf="createProductForm.controls['description'].errors.pattern" class="invalid-feedback d-block">
@@ -55,7 +56,7 @@
                 >
                 <div *ngIf="isInValidInput('price')">
                     <div *ngIf="createProductForm.controls['price'].errors.required" class="invalid-feedback d-block">
-                        Price is required
+                        Price is required and must use . inplace of ,
                     </div>
                 </div>
             </div>
@@ -80,32 +81,6 @@
                 </div>
             </div>
 
-
-            <div class="form-group col item">
-                <label>
-                    Category
-                </label>
-                <input
-                    type="text"
-                    placeholder="Fill in category"
-                    formControlName="category"
-                    required
-                    class="form-control"
-                    [ngClass]="{ 'is-invalid': isInValidInput('category')  || isError}"
-                >
-                <div *ngIf="isInValidInput('category')">
-                    <div *ngIf="createProductForm.controls['category'].errors.required" class="invalid-feedback d-block">
-                        Category is required
-                    </div>
-                </div>
-            </div>
-            <button
-                type="button"
-                class="btn float-left cancel"
-                (click)="goToProducts()"
-                >
-                go to products
-            </button>
             <button
                 type="button"
                 class="btn float-left cancel"
