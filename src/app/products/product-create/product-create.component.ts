@@ -26,8 +26,7 @@ export class ProductCreateComponent implements OnInit {
     this.createProductForm = this.formBuilder.group({
       productname: ['', [Validators.required,
         Validators.pattern('([a-zA-Z]*)')]],
-      description: ['', [Validators.required,
-        Validators.pattern('([a-zA-Z]*)')]],
+      description: ['', [Validators.pattern('([a-zA-Z]*)')]],
       price: ['', [Validators.required,
         Validators.pattern(/[0-9.]/)]],
       stock: ['', [Validators.required,
@@ -57,10 +56,10 @@ export class ProductCreateComponent implements OnInit {
       },
       error: error => {
           this.isError = true;
-          this.errorMessage = error.error.error;
+          this.errorMessage = error.error;
           this.isLoading = false;
       }
-  });
+    });
   }
 
   reset() {
