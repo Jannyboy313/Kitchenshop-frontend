@@ -8,6 +8,7 @@ import { ProductPageComponent } from './products/product-page/product-page.compo
 import { UserOrdersComponent } from './orders/user-orders/user-orders.component';
 import { AdminOrdersComponent } from './orders/admin-orders/admin-orders.component';
 import { ProductCreateComponent } from './products/product-create/product-create.component';
+import { ProductUpdateComponent } from './products/product-update/product-update.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/productcreate', pathMatch: 'full' },
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'products', component: ProductPageComponent},
   { path: 'customerorders', component: UserOrdersComponent},
   { path: 'adminorders', component: AdminOrdersComponent},
-  { path: 'productcreate', component: ProductCreateComponent}
+  { path: 'productcreate', component: ProductCreateComponent},
+  { path: 'productupdate', component: ProductUpdateComponent}
 ];
 
 @NgModule({
