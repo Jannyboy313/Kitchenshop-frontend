@@ -5,8 +5,8 @@
 }
 
 .card {
-    width: 80%;
-    margin: 20px;
+    width: 90%;
+    margin: 20px auto 20px auto;
 }
 
 .list-group-item {
