@@ -1,14 +1,20 @@
 <div class="container-fluid body">
     <div class="row" >
-        <div *ngFor="let order of orders; let i = index" class="card">
-            <div class="col card-body">
-                <h5 class="card-title">Id: {{order.orders_id}} Product: {{order.name}}</h5>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><p class="list-text">Amount: </p></li>
-                    <li class="list-group-item"><h6 class="list-text">Payed: <strong>&#x20ac;</strong></h6></li>
-                    <li class="list-group-item"><p class="list-text">Date bought: {{order.timestamp}}</p></li>
-                </ul>
+        <div class="card" *ngFor="let timestamp of orders | keyvalue">
+            <div class="card-header">
+                {{timestamp.key}}
+            </div>
+            <div *ngFor="let order of timestamp.value; let i = index" class="card">
+                <div class="col card-body">
+                    <h5 class="card-title">Product: {{order.name}}</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><p class="list-text">Amount: {{order.amount}}</p></li>
+                        <li class="list-group-item"><h6 class="list-text">Payed: <strong>&#x20ac;{{order.price}}</strong></h6></li>
+                        <li class="list-group-item"><p class="list-text">Date bought: {{order.timestamp}}</p></li>
+                    </ul>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
