@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
+import { ProductsService } from '../../services/products.service';
 
 @Component({
   selector: 'app-product-create',
@@ -12,7 +15,7 @@ export class ProductCreateComponent implements OnInit {
   errorMessage: string = 'Error not known';
   isLoading: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private productsService: ProductsService) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -25,11 +28,9 @@ export class ProductCreateComponent implements OnInit {
       description: ['', [Validators.required,
         Validators.pattern('([a-zA-Z]*)')]],
       price: ['', [Validators.required,
-        Validators.pattern('([a-zA-Z]*)')]],
+        Validators.pattern(/[0-9.]/)]],
       stock: ['', [Validators.required,
-        Validators.pattern(/([A-Za-z])\s+(\d){1,}(\w{0,1})/)]],
-      category: ['', [Validators.required,
-        Validators.pattern(/(\d{4})\s?([A-Za-z]{2})/)]],
+        Validators.pattern(/[0-9]/)]]
     });
   }
 
@@ -39,14 +40,32 @@ export class ProductCreateComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isError = false;
+    if (this.createProductForm.invalid) {
+        this.isError = true
+        this.errorMessage = "Missing data fields"
+        return;
+    }
+    this.isLoading = true;
+    const product = this.createProduct();
+    this.productsService.addProduct(product)
+    .subscribe({
+      next: () => {
+          this.router.navigate(['/products']);
+      },
+      error: error => {
+          this.isError = true;
+          this.errorMessage = error.error.error;
+          this.isLoading = false;
+      }
+  });
   }
 
   reset() {
-
+    this.createProductForm.reset();
   }
 
-  goToProducts() {
-
+  private createProduct(): Product {
+    return new Product().deserialize(this.createProductForm.value);
   }
-
 }
