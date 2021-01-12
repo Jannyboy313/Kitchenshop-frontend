@@ -48,11 +48,17 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
       stock: ['', [Validators.required,
         Validators.pattern(/[0-9]/)]]
     });
+    this.addValue();
   }
 
     // data erin zetten met formgroup
   addValue():any {
-    this.createProductForm.setValue
+    this.createProductForm.setValue({
+      productname: this.product.name,
+      description: this.product.description,
+      price: this.product.price,
+      stock: this.product.stock
+    });
   }
 
   isInValidInput(fieldName): boolean {
