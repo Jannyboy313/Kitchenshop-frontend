@@ -78,6 +78,10 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
         this.isError = true
         this.errorMessage = "Missing data fields"
         return;
+    } else if(!this.isChange()) {
+      this.isError = true
+      this.errorMessage = "Nothing is changed"
+      return;
     }
     this.isLoading = true;
     this.product = this.setProduct();
@@ -105,12 +109,12 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
     this.isShown = false;
   }
 
-  isNoChange() {
+  private isChange() {
     let copyProduct = this.setProduct();
     if(copyProduct !== this.product) {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   private setProduct(): Product {
