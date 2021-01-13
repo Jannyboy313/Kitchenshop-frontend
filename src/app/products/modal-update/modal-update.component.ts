@@ -17,7 +17,7 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
   isShown = false;
   isLoading = false;
   isError = false;
-  createProductForm: FormGroup;
+  updateProductForm: FormGroup;
   errorMessage: string;
 
   constructor(
@@ -41,7 +41,7 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
   }
 
   initForm(): void {
-    this.createProductForm = this.formBuilder.group({
+    this.updateProductForm = this.formBuilder.group({
       productname: ['', [Validators.required,
         Validators.pattern(/[a-zA-Z\s]*/)]],
       description: ['', [Validators.pattern(/[a-zA-Z0-9.,?!'"()@*-_&#\s]/)]],
@@ -54,7 +54,7 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
   }
 
   addValue(product):any {
-    this.createProductForm.setValue({
+    this.updateProductForm.setValue({
       productname: product.name,
       description: product.description,
       price: product.price,
@@ -63,8 +63,8 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
   }
 
   isInValidInput(fieldName): boolean {
-    return this.createProductForm.controls[fieldName].invalid &&
-      (this.createProductForm.controls[fieldName].dirty || this.createProductForm.controls[fieldName].touched);
+    return this.updateProductForm.controls[fieldName].invalid &&
+      (this.updateProductForm.controls[fieldName].dirty || this.updateProductForm.controls[fieldName].touched);
   }
 
   ngOnDestroy(): void {
@@ -74,23 +74,23 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
 
   update() {
     this.isError = false;
-    if (this.createProductForm.invalid) {
+    if (this.updateProductForm.invalid) {
         this.isError = true
         this.errorMessage = "Missing data fields"
         return;
     }
     this.isLoading = true;
-    const product = this.createProduct();
-    this.productsService.addProduct(product)
+    this.setProduct();
+    this.productsService.updateProduct(this.product)
     .subscribe({
-      next: (data) => {
-          this.notChangedProduct = new Product().deserialize(data)
+      next: () => {
+          this.notChangedProduct = this.product;
           this.close();
           this.isLoading = false;
       },
       error: error => {
           this.isError = true;
-          this.errorMessage = error.error;
+          this.errorMessage = error.error.error;
           this.isLoading = false;
       }
     });
@@ -105,7 +105,10 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
     this.isShown = false;
   }
 
-  private createProduct(): Product {
-    return new Product().deserialize(this.createProductForm.value);
+  private setProduct() {
+    this.product.name = this.updateProductForm.get('productname').value;
+    this.product.description = this.updateProductForm.get('description').value;
+    this.product.price = this.updateProductForm.get('price').value;
+    this.product.stock = this.updateProductForm.get('stock').value;
   }
 }

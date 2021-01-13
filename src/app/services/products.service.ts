@@ -23,6 +23,6 @@ export class ProductsService {
   }
 
   updateProduct(product: Product): any {
-    return this.http.put<any>(environment.apiUrl + "/addproduct", {"product": product});
+    return this.http.put<any>(environment.apiUrl + "/updateproduct", {"product": product});
   }
 }
