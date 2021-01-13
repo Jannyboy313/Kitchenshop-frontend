@@ -12,6 +12,7 @@ import { Product } from 'src/app/models/product.model';
 export class ModalUpdateComponent implements OnInit, OnDestroy {
   @Input() id: string;
   @Input() product: Product;
+  notChangedProduct: Product;
   private element: any;
   isShown = false;
   isLoading = false;
@@ -33,6 +34,7 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
           console.error('modal must have an id');
           return;
       }
+      this.notChangedProduct = this.product;
       document.body.appendChild(this.element);
       this.modalService.add(this);
       this.initForm();
@@ -48,16 +50,15 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
       stock: ['', [Validators.required,
         Validators.pattern(/[0-9]/)]]
     });
-    this.addValue();
+    this.addValue(this.product);
   }
 
-    // data erin zetten met formgroup
-  addValue():any {
+  addValue(product):any {
     this.createProductForm.setValue({
-      productname: this.product.name,
-      description: this.product.description,
-      price: this.product.price,
-      stock: this.product.stock
+      productname: product.name,
+      description: product.description,
+      price: product.price,
+      stock: product.stock
     });
   }
 
@@ -82,8 +83,10 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
     const product = this.createProduct();
     this.productsService.addProduct(product)
     .subscribe({
-      next: () => {
+      next: (data) => {
+          this.notChangedProduct = new Product().deserialize(data)
           this.close();
+          this.isLoading = false;
       },
       error: error => {
           this.isError = true;
@@ -95,6 +98,7 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
 
   open(): void {
     this.isShown = true;
+    this.addValue(this.notChangedProduct);
   }
 
   close(): void {
