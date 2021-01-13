@@ -10,17 +10,35 @@ import { ModalService } from '../../services/modal.service';
 })
 export class ProductUpdateComponent implements OnInit {
   products: Product[] = []
+  isDisabled: boolean = false;
+  isError: boolean = false;
+  errorMessage: string = "Error not known";
   constructor(private productsService: ProductsService, private modalService: ModalService) { }
 
   ngOnInit(): void {
     this.getProducts();
   }
 
-  deleteButton(product) {
+  deleteButton(product, index) {
+    this.isDisabled = true;
+    this.isError = false;
     this.productsService.deleteProduct(product.productnumber)
+    .subscribe({
+      next: () => {
+          console.log("This is a succes")
+          console.log("This is the index: ", index)
+          this.products.splice(index, 1);
+          this.isDisabled = false;
+      },
+      error: error => {
+          this.isDisabled = false;
+          this.isError = true;
+          this.errorMessage = error.error.error;
+      }
+    });
   }
 
-  updateButton(product) {
+  editButton(product) {
     this.modalService.open(product.productnumber);
   }
 

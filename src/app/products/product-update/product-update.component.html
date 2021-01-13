@@ -1,6 +1,9 @@
 <main>
     <div class="row row-cols-sm-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
-        <div class="card col" *ngFor="let product of products;">
+        <div *ngIf="isError" class="alert alert-danger">
+            {{errorMessage}}
+        </div>
+        <div class="card col" *ngFor="let product of products; let i = index">
             <div class="card-body">
                 <h5 class="card-title">{{product.name}}</h5>
                 <p class="card-text">{{getShortenedDescription(product.description)}}...</p>
@@ -8,11 +11,13 @@
                     <li class="list-group-item"><h6>Price: <strong>&#x20ac;{{product.price}}</strong></h6></li>
                 </ul>
                 <button class="btn btn-outline-danger"
-                        (click)="deleteButton(product)">
+                        (click)="deleteButton(product, i)"
+                        [disabled]="isDisabled">
                     Delete
                 </button>
                 <button class="btn btn-primary float-right"
-                        (click)="updateButton(product)">
+                        (click)="editButton(product)"
+                        [disabled]="isDisabled">
                   Edit
                 </button>
             </div>
