@@ -80,7 +80,7 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
         return;
     }
     this.isLoading = true;
-    this.setProduct();
+    this.product = this.setProduct();
     this.productsService.updateProduct(this.product)
     .subscribe({
       next: () => {
@@ -105,10 +105,20 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
     this.isShown = false;
   }
 
-  private setProduct() {
-    this.product.name = this.updateProductForm.get('productname').value;
-    this.product.description = this.updateProductForm.get('description').value;
-    this.product.price = this.updateProductForm.get('price').value;
-    this.product.stock = this.updateProductForm.get('stock').value;
+  isNoChange() {
+    let copyProduct = this.setProduct();
+    if(copyProduct !== this.product) {
+      return false;
+    }
+    return true;
+  }
+
+  private setProduct(): Product {
+    let updateProduct = this.product;
+    updateProduct.name = this.updateProductForm.get('productname').value;
+    updateProduct.description = this.updateProductForm.get('description').value;
+    updateProduct.price = this.updateProductForm.get('price').value;
+    updateProduct.stock = this.updateProductForm.get('stock').value;
+    return updateProduct;
   }
 }
