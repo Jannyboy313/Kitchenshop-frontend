@@ -24,11 +24,11 @@ export class ProductCreateComponent implements OnInit {
 
   initForm(): void {
     this.createProductForm = this.formBuilder.group({
-      productname: ['', [Validators.required,
-        Validators.pattern(/[a-zA-Z\s]*/)]],
-      description: ['', [Validators.pattern(/[a-zA-Z0-9.,?!'"()@*-_&#\s]/)]],
+      name: ['', [Validators.required,
+        Validators.pattern(/[a-zA-Z\s]*/), Validators.maxLength(50)]],
+      description: ['', [Validators.maxLength(1000)]],
       price: ['', [Validators.required,
-        Validators.pattern(/[0-9.]/)]],
+        Validators.pattern(/^\d+(.\d{2})?$/)]],
       stock: ['', [Validators.required,
         Validators.pattern(/[0-9]/)]]
     });
