@@ -42,11 +42,11 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
 
   initForm(): void {
     this.updateProductForm = this.formBuilder.group({
-      productname: ['', [Validators.required,
-        Validators.pattern(/[a-zA-Z\s]*/)]],
-      description: ['', [Validators.pattern(/[a-zA-Z0-9.,?!'"()@*-_&#\s]/)]],
+      name: ['', [Validators.required,
+        Validators.pattern(/[a-zA-Z\s]*/), Validators.maxLength(50)]],
+      description: ['', [Validators.maxLength(1000)]],
       price: ['', [Validators.required,
-        Validators.pattern(/[0-9.]/)]],
+        Validators.pattern(/^\d+(.\d{2})?$/)]],
       stock: ['', [Validators.required,
         Validators.pattern(/[0-9]/)]]
     });
@@ -55,7 +55,7 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
 
   addValue(product):any {
     this.updateProductForm.setValue({
-      productname: product.name,
+      name: product.name,
       description: product.description,
       price: product.price,
       stock: product.stock
@@ -119,7 +119,7 @@ export class ModalUpdateComponent implements OnInit, OnDestroy {
 
   private setProduct(): Product {
     let updateProduct = this.product;
-    updateProduct.name = this.updateProductForm.get('productname').value;
+    updateProduct.name = this.updateProductForm.get('name').value;
     updateProduct.description = this.updateProductForm.get('description').value;
     updateProduct.price = this.updateProductForm.get('price').value;
     updateProduct.stock = this.updateProductForm.get('stock').value;
