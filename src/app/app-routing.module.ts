@@ -11,7 +11,7 @@ import { ProductCreateComponent } from './products/product-create/product-create
 import { ProductUpdateComponent } from './products/product-update/product-update.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/productcreate', pathMatch: 'full' },
+  { path: '', redirectTo: '/productupdate', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
