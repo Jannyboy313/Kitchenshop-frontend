@@ -21,11 +21,7 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   updateButton(product) {
-
-  }
-
-  openInfoModal(product: Product) {
-    this.modalService.open(product.name);
+    this.modalService.open(product.productnumber);
   }
 
   private getProducts() {
