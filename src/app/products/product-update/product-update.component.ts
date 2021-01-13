@@ -17,7 +17,7 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   deleteButton(product) {
-
+    this.productsService.deleteProduct(product.productnumber)
   }
 
   updateButton(product) {

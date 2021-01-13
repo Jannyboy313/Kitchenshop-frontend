@@ -24,4 +24,9 @@ export class ProductsService {
   updateProduct(product: Product): any {
     return this.http.put<any>(environment.apiUrl + "/updateproduct", {"product": product});
   }
+
+  deleteProduct(productnumber) {
+    return this.http
+    .delete(`${environment.apiUrl}/deleteproduct?productnumber=${productnumber}`);
+  }
 }
