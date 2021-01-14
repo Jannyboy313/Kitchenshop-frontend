@@ -9,6 +9,8 @@ import { UsersService } from '../../services/users.service';
 })
 export class UserComponent implements OnInit {
   @Input() user: User;
+  deleteIsLoading: boolean = false
+  roleIsLoading: boolean = false;
 
   constructor(private usersService: UsersService) { }
 
@@ -16,7 +18,18 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser() {
-    this.usersService.deleteUser(this.user);
+    this.deleteIsLoading = true;
+    this.usersService.deleteUser(this.user)
+      .subscribe({
+        next: () => {
+          this.deleteIsLoading = false;
+
+        },
+        error: () => {
+          this.deleteIsLoading = false;
+
+        }
+      })
   }
 
   setRole() {

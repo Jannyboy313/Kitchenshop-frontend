@@ -38,6 +38,8 @@ export class UsersService {
       }
     }
     this.usersSubject.next(this.users);
+    return this.http
+    .delete(`${environment.apiUrl}/deleteuser?user_id=${user.user_id}`);
   }
 
   setRole(user: User) {
