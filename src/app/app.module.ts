@@ -10,6 +10,7 @@ import { LoginModule } from './login/login.module';
 import { CartModule } from './cart/cart.module';
 import { ProductsModule } from './products/products.module';
 import { OrdersModule } from './orders/orders.module';
+import { UsersModule } from './users/users.module';
 
 import { AppComponent } from './app.component';
 
@@ -26,7 +27,8 @@ import { AppComponent } from './app.component';
     LoginModule,
     CartModule,
     ProductsModule,
-    OrdersModule
+    OrdersModule,
+    UsersModule
   ],
   providers: [
     {
