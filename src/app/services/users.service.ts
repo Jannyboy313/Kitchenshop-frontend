@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { User } from '../models/user.model';
+import { environment } from "../../environments/environment";
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +12,17 @@ export class UsersService {
   private users: User[];
   private usersSubject = new Subject<User[]>();
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.usersSubject.next([]);
+  }
+
+  downloadUsers() {
+    return this.http.get<User[]>(`${environment.apiUrl}/users`)
+    .pipe(map(data => data.map(data => new User().deserialize(data))));
+  }
+
+  uploadUsers() {
+
   }
 
   getUsers() {
