@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { constants } from 'buffer';
 import { User } from 'src/app/models/user.model';
 import { UsersService } from '../../services/users.service';
 
@@ -38,10 +39,9 @@ export class UserComponent implements OnInit {
   }
 
   setRole(role) {
-    console.log("This is the user: ", this.user)
-    console.log("This is the role: ", role)
     this.isError = false;
-    let copyUser = this.user
+    this.roleIsLoading = true
+    let copyUser = JSON.parse(JSON.stringify(this.user));
     copyUser.role = role;
     this.usersService.updateUser(copyUser)
       .subscribe({

@@ -6,17 +6,22 @@
     <p class="card-text">This is the email address: {{user.email}}</p>
     <p class="card-text">This is the role: {{user.role}}</p>
     <div class="float-right">
-        <button class="btn btn-outline-danger" (click)="deleteUser()">
+        <button class="btn btn-outline-danger" (click)="deleteUser()" [disabled]="deleteIsLoading || roleIsLoading">
+            <span *ngIf="deleteIsLoading" class="spinner-border spinner-border-sm mr-1"></span>
             Delete User
         </button>
         <button class="btn btn-outline-primary short"
                 (click)="setRole('users')"
-                *ngIf="isAdmin()">
+                *ngIf="isAdmin()"
+                [disabled]="deleteIsLoading || roleIsLoading">
+                <span *ngIf="roleIsLoading" class="spinner-border spinner-border-sm mr-1"></span>
             Demote to user
         </button>
         <button class="btn btn-outline-success"
                 (click)="setRole('admin')"
-                *ngIf="!isAdmin()">
+                *ngIf="!isAdmin()"
+                [disabled]="deleteIsLoading || roleIsLoading">
+                <span *ngIf="roleIsLoading" class="spinner-border spinner-border-sm mr-1"></span>
             Promote to admin
         </button>
     </div>
