@@ -7,10 +7,14 @@ import { User } from '../models/user.model';
 })
 export class UsersService {
   private users: User[];
-  private userSubject = new Subject<User[]>();
+  private usersSubject = new Subject<User[]>();
 
   constructor() {
-    this.userSubject.next([]);
+    this.usersSubject.next([]);
+  }
+
+  getUsers() {
+    return this.usersSubject;
   }
 
   deleteUser(user) {
@@ -20,6 +24,6 @@ export class UsersService {
         break;
       }
     }
-    this.userSubject.next(this.users);
+    this.usersSubject.next(this.users);
   }
 }
