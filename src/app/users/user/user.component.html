@@ -3,17 +3,17 @@
     <p class="card-text">{{user.email}}</p>
     <p class="card-text">{{user.role}}</p>
     <div class="float-right card">
-        <button class="btn" (click)="deleteUser(user)">
+        <button class="btn" (click)="deleteUser()">
             Delete User
         </button>
         <button class="btn"
                 (click)="setRole('user')"
-                *ngIf="isAdmin(user)">
+                *ngIf="isAdmin()">
             Demote to user
         </button>
         <button class="btn"
                 (click)="setRole('admin')"
-                *ngIf="!isAdmin(user)">
+                *ngIf="!isAdmin()">
             Promote to admin
         </button>
     </div>

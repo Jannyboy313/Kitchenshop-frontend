@@ -14,16 +14,16 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteUser(user) {
+  deleteUser() {
 
   }
 
-  setRole(role) {
+  setRole() {
 
   }
 
-  isAdmin(user) {
-    if (user.role === 'admin') {
+  isAdmin() {
+    if (this.user.role === 'admin') {
       return true;
     }
     return false;
