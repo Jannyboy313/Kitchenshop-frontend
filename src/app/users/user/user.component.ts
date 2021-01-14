@@ -16,11 +16,11 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser() {
-
+    this.usersService.deleteUser(this.user);
   }
 
   setRole() {
-
+    this.usersService.setRole(this.user);
   }
 
   isAdmin() {
