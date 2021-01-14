@@ -1,9 +1,6 @@
 <div class="row">
     <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Users</h3>
-        </div>
-        <div class="card-body" *ngFor="let user of users">
+        <div class="card-body">
             <h5 class="card-title">{{user.firstname}} {{user.lastname}}</h5>
             <p class="card-text">{{user.email}}</p>
             <p class="card-text">{{user.role}}</p>
