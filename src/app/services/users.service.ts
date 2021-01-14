@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { User } from '../models/user.model';
 import { environment } from "../../environments/environment";
 import { map } from 'rxjs/operators';
@@ -16,7 +16,7 @@ export class UsersService {
     this.usersSubject.next([]);
   }
 
-  getUsers() {
+  public getUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${environment.apiUrl}/users`)
     .pipe(map(data => data.map(data => new User().deserialize(data))));
   }
