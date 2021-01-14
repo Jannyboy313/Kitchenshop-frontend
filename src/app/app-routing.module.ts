@@ -10,6 +10,7 @@ import { AdminOrdersComponent } from './orders/admin-orders/admin-orders.compone
 import { ProductCreateComponent } from './products/product-create/product-create.component';
 import { ProductUpdateComponent } from './products/product-update/product-update.component';
 import { UsersComponent } from './users/users/users.component';
+import { AboutUsComponent } from './about-us/about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/productupdate', pathMatch: 'full' },
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'adminorders', component: AdminOrdersComponent},
   { path: 'productcreate', component: ProductCreateComponent},
   { path: 'productupdate', component: ProductUpdateComponent},
-  { path: 'users', component: UsersComponent}
+  { path: 'users', component: UsersComponent},
+  { path: 'aboutus', component: AboutUsComponent}
 ];
 
 @NgModule({
