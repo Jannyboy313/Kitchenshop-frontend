@@ -9,7 +9,7 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  users: User[];
+  users: User[] = [];
   usersObservable$: Observable<User[]>;
 
   constructor(private usersService: UsersService) { }
@@ -17,11 +17,11 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getUsers()
       .subscribe(users => {
-        this.usersService.setUsers(users);
         this.usersObservable$ = this.usersService.getUsersSubject();
         this.usersObservable$.subscribe(updatedUsers => {
           this.users = updatedUsers;
         })
+        this.usersService.setUsers(users);
       })
   }
 
