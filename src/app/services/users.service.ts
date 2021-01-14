@@ -16,16 +16,17 @@ export class UsersService {
     this.usersSubject.next([]);
   }
 
-  downloadUsers() {
+  getUsers() {
     return this.http.get<User[]>(`${environment.apiUrl}/users`)
     .pipe(map(data => data.map(data => new User().deserialize(data))));
   }
 
-  uploadUsers() {
-
+  setUsers(users: User[]) {
+    this.users = users;
+    return this.usersSubject.next(this.users);
   }
 
-  getUsers() {
+  getUsersSubject() {
     return this.usersSubject;
   }
 

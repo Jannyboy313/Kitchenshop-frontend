@@ -17,7 +17,8 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getUsers()
       .subscribe(users => {
-        this.usersObservable$ = this.usersService.getUsers();
+        this.usersService.setUsers(users);
+        this.usersObservable$ = this.usersService.getUsersSubject();
         this.usersObservable$.subscribe(updatedUsers => {
           this.users = updatedUsers;
         })
