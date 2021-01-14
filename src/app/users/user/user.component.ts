@@ -8,18 +8,26 @@ import { User } from 'src/app/models/user.model';
 })
 export class UserComponent implements OnInit {
   @Input() user: User;
+  users: User[];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  deleteUser() {
+  deleteUser(user) {
 
   }
 
   setRole(role) {
 
+  }
+
+  isAdmin(user) {
+    if (user.role === 'admin') {
+      return true;
+    }
+    return false;
   }
 
 }
