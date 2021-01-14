@@ -17,7 +17,7 @@ export class UsersService {
     return this.usersSubject;
   }
 
-  deleteUser(user) {
+  deleteUser(user: User) {
     for (let i=0; i<this.users.length; i++) {
       if (this.users[i].user_id == user.user_id) {
         this.users.splice(i, 1);
@@ -27,7 +27,7 @@ export class UsersService {
     this.usersSubject.next(this.users);
   }
 
-  setRole(user) {
+  setRole(user: User) {
     for (let i=0; i<this.users.length; i++) {
       if (this.users[i].user_id == user.user_id) {
         this.users[i].role = user.role
