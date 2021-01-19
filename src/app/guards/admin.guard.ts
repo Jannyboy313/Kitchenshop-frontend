@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
   canActivate (
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.authService.getUser().permission === 'admin') {
+      if (this.authService.getUser().role === 'admin') {
         return true;
       }
       window.alert('You don\'t have permission to view this page');
