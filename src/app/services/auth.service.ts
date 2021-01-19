@@ -22,6 +22,7 @@ export class AuthService {
   }
 
   loginUser(user: User, jwt: string) {
+    console.log("This is the user: ", user);
     this.user = user;
     this.storeJwtToken(jwt);
     this.routeUser();
@@ -46,7 +47,7 @@ export class AuthService {
   }
 
   isLoggedIn() {
-    return !!this.getJwtToken() && this.user
+    return !!this.getJwtToken();
   }
 
   getJwtToken() {

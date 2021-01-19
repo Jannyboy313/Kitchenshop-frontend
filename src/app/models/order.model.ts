@@ -5,12 +5,6 @@ export class Order implements Deserializable {
   timestamp: string = null;
   user_id: number;
   productnumber: number;
-  name: string = null;
-  description: string = null;
-  stock: string = null;
-  price: string = null;
-  category: string = null;
-  amount: number = null;
 
   deserialize(input: any) {
     Object.assign(this, input);

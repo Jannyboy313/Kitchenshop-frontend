@@ -37,10 +37,12 @@ export class BuyModalComponent implements OnInit, OnDestroy {
     this.element.remove();
   }
 
+  // open modal
   open(): void {
     this.isShown = true;
   }
 
+  // close modal
   close(): void {
     this.isShown = false;
   }
