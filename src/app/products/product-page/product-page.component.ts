@@ -31,9 +31,10 @@ export class ProductPageComponent implements OnInit {
       if (i <= 25) {
         shortenedDescription += ' ' + short[i]
       }else {
-        return shortenedDescription.trim();
+        break;
       }
     }
+    return shortenedDescription.trim();
   }
 
   openInfoModal(product: Product) {

@@ -14,7 +14,7 @@
           (click)="isCollapsed = true">Products</a>
 
           <a class="nav-item nav-link"
-          routerLink="/home"
+          routerLink="/aboutus"
           (click)="isCollapsed = true">About us</a>
         </div>
 
@@ -35,13 +35,19 @@
               </a>
               <a
                 ngbDropdownItem
-                routerLink="/customerorders"
+                routerLink="/productcreate"
                 (click)="isCollapsed = true">
                 Add Product
               </a>
               <a
                 ngbDropdownItem
-                routerLink="/adminorders"
+                routerLink="/productupdate"
+                (click)="isCollapsed = true">
+                Update product
+              </a>
+              <a
+                ngbDropdownItem
+                routerLink="/users"
                 (click)="isCollapsed = true">
                 Users
               </a>
