@@ -1,8 +1,0 @@
-.modal.show {
-    display: block;
-}
-
-textarea {
-    min-height: 120px;
-    max-height: 320px;
-}
