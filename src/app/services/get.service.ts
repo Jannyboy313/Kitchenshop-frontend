@@ -19,10 +19,4 @@ export class GetService {
     .get<Category[]>(`${this.env.apiUrl}/categories`).pipe(
     map(data => data.map(data => new Category().deserialize(data))));
   }
-
-  public getProducts(): Observable<Product[]> {
-    return this.http
-    .get<Product[]>(`${this.env.apiUrl}/products`).pipe(
-    map(data => data.map(data => new Product().deserialize(data))));
-  }
 }

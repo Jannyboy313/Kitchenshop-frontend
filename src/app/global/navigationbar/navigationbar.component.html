@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md nav-color">
-    <a class="navbar-brand font titleColor" routerLink="/home" href="">Piscines</a>
+    <a class="navbar-brand font titleColor" routerLink="/home">Piscines</a>
 
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
       <span class="navbar-toggler-icon"></span>
@@ -10,20 +10,54 @@
           <a class="nav-item nav-link" routerLink="/home" (click)="isCollapsed = true">Home <span class="sr-only">(current)</span></a>
 
           <a class="nav-item nav-link"
-          routerLink="/home"
+          routerLink="/products"
           (click)="isCollapsed = true">Products</a>
 
           <a class="nav-item nav-link"
-          routerLink="/home"
+          routerLink="/aboutus"
           (click)="isCollapsed = true">About us</a>
         </div>
 
         <div class="navbar-nav justify-content-end">
+          <div ngbDropdown  class="d-inline-block" *ngIf="isAdmin()">
+            <a
+              class="nav-item nav-link dropdown-toggle"
+              id="dropdownMenuLink"
+              ngbDropdownToggle>
+              Admin
+            </a>
+            <div class="dropdown-menu" ngbDropdownMenu aria-labelledby="dropdownMenuLink">
+              <a
+                ngbDropdownItem
+                routerLink="/adminorders"
+                (click)="isCollapsed = true">
+                Orders
+              </a>
+              <a
+                ngbDropdownItem
+                routerLink="/productcreate"
+                (click)="isCollapsed = true">
+                Add Product
+              </a>
+              <a
+                ngbDropdownItem
+                routerLink="/productupdate"
+                (click)="isCollapsed = true">
+                Update product
+              </a>
+              <a
+                ngbDropdownItem
+                routerLink="/users"
+                (click)="isCollapsed = true">
+                Users
+              </a>
+            </div>
+          </div>
 
           <a class="nav-item nav-link"
-          routerLink="/home"
+          routerLink="/customerorders"
           (click)="isCollapsed = true"
-          *ngIf="isAdmin()">Admin</a>
+          *ngIf="!isAdmin() && isLoggedIn()">Account</a>
 
           <a class="nav-item nav-link"
           routerLink="/login"

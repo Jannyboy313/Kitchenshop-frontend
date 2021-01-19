@@ -37,11 +37,9 @@ export class LoginComponent implements OnInit {
     this.authService.postLogin({email: form.value.email, password: form.value.password})
     .subscribe({
       next: value => {
-        console.log(value)
         this.authService.loginUser(new User().deserialize(value.User), value.token);
       },
       error: error => {
-        console.log(error);
         this.isError = true;
         this.isLoading = false;
         form.reset();

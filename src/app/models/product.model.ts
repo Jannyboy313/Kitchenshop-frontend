@@ -6,11 +6,11 @@ export class Product implements Deserializable {
   description: string;
   price: string;
   stock: string;
-  category: string;
+  category: string = null;
 
   deserialize(input: any) {
     Object.assign(this, input);
     return this;
   }
-  
+
 }

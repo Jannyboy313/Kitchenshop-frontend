@@ -1,0 +1,128 @@
+::-webkit-input-placeholder { font-size: 16px; }
+::-moz-placeholder { font-size: 16px; }
+:-ms-input-placeholder { font-size: 16px; }
+
+div {
+    font-size: 17px;
+}
+
+.vertical-center {
+    min-height: 90%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 90vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.row {
+    margin: auto;
+}
+
+form {
+    display: block;
+    box-shadow: 0px 0px 20px rgba(#000, .7);
+    background-color: rgb(250, 250, 247);
+    position: relative;
+    color: #333;
+    border-radius: 6px;
+    position: center;
+    padding: 0;
+    max-width: 700px;
+    border-width: 2px;
+    border-color: #87746e;
+    border-style: solid;
+}
+
+header {
+    background: #FAF6ea;
+    padding: 10px 20px;
+    color: #285e86;
+    font-family: 'Fulbo Argenta';
+    font-size: 1.6em;
+    font-weight: 600;
+    border-radius: 5px 5px 0 0;
+}
+
+input {
+    padding: 8px 15px;
+    font-size: 1em;
+    border: 1px solid #87746e;
+    border-radius: 15px;
+}
+
+textarea {
+    padding: 8px 15px;
+    font-size: 1em;
+    border: 1px solid #87746e;
+    border-radius: 15px;
+}
+
+.item {
+    max-width: 65%;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.item-last {
+    padding-bottom: 15px;
+}
+
+button {
+    background-color: #57697a;
+    font-size: 18px;
+    color: #FAF6ea;
+    border-radius: 9px;
+    padding: 2px 20px;
+    outline: #87746e;
+    box-shadow: 0px 0px 8px rgba(#333, 0.4);
+    margin: 8px 25px 12px 25px;
+}
+
+button:hover {
+    background-color: #285e86;
+    color: #FAF6ea;
+    border-radius: 6px;
+    cursor: hand;
+}
+
+.cancel {
+    background-color: rgb(250, 250, 247);
+    border-width: 2px;
+    border-color: #57697a;
+    border-style: solid;
+    color: #000000;
+}
+
+.cancel:hover {
+    background-color: rgb(250, 245, 245);
+    color: #000000;
+    border-color: #285e86;
+}
+
+@media only screen and (max-width: 768px) {
+    ::-webkit-input-placeholder { font-size: 15px; }
+    ::-moz-placeholder { font-size: 15px; }
+    :-ms-input-placeholder { font-size: 15px; }
+
+    .item {
+        max-width: 70%;
+    }
+
+    button {
+        margin: 8px 20px 12px 20px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    ::-webkit-input-placeholder { font-size: 14px; }
+    ::-moz-placeholder { font-size: 14px; }
+    :-ms-input-placeholder { font-size: 14px; }
+
+    .item {
+        max-width: 90%;
+    }
+
+    button {
+        margin: 8px 10px 12px 10px;
+    }
+}

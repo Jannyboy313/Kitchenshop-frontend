@@ -7,7 +7,7 @@ export class User implements Deserializable {
   middlename: string;
   lastname: string;
   email: string;
-  password: string;
+  password: string = null;
   address_id: string = null;
 
   deserialize(input: any) {
