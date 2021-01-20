@@ -25,8 +25,6 @@ export class ProductUpdateComponent implements OnInit {
     this.productsService.deleteProduct(product.productnumber)
     .subscribe({
       next: () => {
-          console.log("This is a succes")
-          console.log("This is the index: ", index)
           this.products.splice(index, 1);
           this.isDisabled = false;
       },

@@ -15,7 +15,7 @@ import { AboutUsComponent } from './about-us/about-us/about-us.component';
 import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/productupdate', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent,},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
