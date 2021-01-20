@@ -43,7 +43,6 @@ export class UsersService {
   }
 
   setRole(user: User) {
-    console.log("Im called")
     for (let i=0; i<this.users.length; i++) {
       if (this.users[i].user_id == user.user_id) {
         this.users[i].role = user.role
